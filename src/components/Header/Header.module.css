@@ -1,0 +1,14 @@
+.Header {
+  width: 95%;
+  height: 4rem;
+  background-color: #4a4e69;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: -0.1rem 0.1rem 0.3rem #e5e5e5;
+}
+.Header h2 {
+  color: white;
+}
