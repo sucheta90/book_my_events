@@ -4,11 +4,15 @@ import styles from "./EventItem.module.css";
 
 export default function EventItem(props) {
   return (
-    <Card>
-      <h2 className={styles.title}>{props.title}</h2>
-      <span>{`${props.date} ${props.time}`}</span>
-      <p>{props.location} </p>
-      <p>{props.city}</p>
+    <Card className={styles.tile} onClick={props.onClick}>
+      <h2 className={`${styles.title} ${styles.pointer_none}`}>
+        {props.title}
+      </h2>
+      <span
+        className={styles.pointer_none}
+      >{`${props.date} ${props.time}`}</span>
+      <p className={styles.pointer_none}>{props.location} </p>
+      <p className={styles.pointer_none}>{props.city}</p>
     </Card>
   );
 }

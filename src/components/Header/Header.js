@@ -6,7 +6,6 @@ export default function Header() {
   return (
     <div className={styles.Header}>
       <h2>Book My Events</h2>
-      <button>Add Event</button>
     </div>
   );
 }

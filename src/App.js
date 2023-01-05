@@ -77,11 +77,13 @@ function App() {
       blueClass: 200,
     },
   ];
-
+  function handleClick(e) {
+    console.log(e.target);
+  }
   return (
     <div className="App">
       <Header />
-      <Events events={eventData} />
+      <Events events={eventData} onClick={handleClick} />
     </div>
   );
 }

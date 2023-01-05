@@ -16,6 +16,7 @@ export default function Events(props) {
         redClass={each.redClass}
         greenClass={each.greenclass}
         blueClass={each.blueclass}
+        onClick={props.onClick}
       />
     );
   });

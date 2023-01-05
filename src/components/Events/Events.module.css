@@ -2,3 +2,9 @@
   width: 50%;
   margin-left: 2rem;
 }
+@media screen and (max-width: 768px) {
+  .event_list {
+    width: 90vw;
+    margin: 0 auto;
+  }
+}
