@@ -13,12 +13,28 @@
   text-align: center;
 }
 body {
-  background-color: #003049;
+  /* background-color: #003049; */
 }
 .App {
   background-color: #003049;
-  width: 100%;
+  width: 90vw;
   min-height: 100vh;
   height: 100%;
   padding-top: 1rem;
+  margin: 0 auto;
+  /* display: flex;
+  flex-direction: column; */
+}
+.dashboard {
+  width: 95%;
+  height: 100%;
+  border: none;
+  display: flex;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* background-color: white; */
 }

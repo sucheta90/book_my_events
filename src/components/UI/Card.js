@@ -6,6 +6,7 @@ export default function Card(props) {
     return (
       <div
         className={`${styles.card} ${props.className}`}
+        id={props.id}
         onClick={props.onClick}
       >
         {props.children}

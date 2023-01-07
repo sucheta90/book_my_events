@@ -1,22 +1,16 @@
 import React from "react";
 import styles from "./Events.module.css";
-import Card from "../UI/Card";
-import EventItem from "./EventItem";
+// import Card from "../UI/Card";
+
+import EventContainer from "./EventContainer";
 
 export default function Events(props) {
-  const eventItem = props.events.map((each) => {
+  const eventItem = props.events.map((event) => {
     return (
-      <EventItem
-        key={each.id}
-        title={each.title}
-        date={each.date}
-        time={each.time}
-        location={each.location}
-        city={each.city}
-        redClass={each.redClass}
-        greenClass={each.greenclass}
-        blueClass={each.blueclass}
-        onClick={props.onClick}
+      <EventContainer
+        key={props.events.indexOf(event)}
+        id={`event_container_${props.events.indexOf(event)}`}
+        event={event}
       />
     );
   });
