@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import EventItem from "./EventItem";
 import EventDetails from "./EventDetails";
-import Seats from "../SeatBooking/Seats";
+import SeatBooking from "../SeatBooking/SeatBooking";
 import styles from "./EventContainer.module.css";
 
 // import Events from "./Events";
 
 export default function EventContainer(props) {
   const eventDetail = {
-    id: props.event.id,
-    date: props.event.date,
+    image: props.event.image,
+    description: props.event.description,
+    direction: props.event.direction,
+    location: props.event.location,
+    city: props.event.city,
+    state: props.event.state,
   };
   const eventItem = {
+    location: props.event.location,
     id: props.event.id,
     city: props.event.city,
   };
@@ -46,9 +51,13 @@ export default function EventContainer(props) {
         toShow={show}
       />
       {show == "EventDetail" && (
-        <EventDetails hideDetailHandler={hideDetail} bookNowHandler={bookNow} />
+        <EventDetails
+          hideDetailHandler={hideDetail}
+          bookNowHandler={bookNow}
+          event={eventDetail}
+        />
       )}
-      {show == "bookNow" && <Seats hideSeatingHandler={hideSeating} />}
+      {show == "bookNow" && <SeatBooking hideSeatingHandler={hideSeating} />}
     </>
   );
 }

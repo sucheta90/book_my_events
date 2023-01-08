@@ -1,13 +1,16 @@
 import React from "react";
 import Card from "../UI/Card";
-import styles from "./Seats.module.css";
+import styles from "./SeatBooking.module.css";
+import Seats from "./Seats/Seats";
+import SeatingHeader from "./SeatingHeader";
 
-export default function Seats(props) {
+export default function SeatBooking(props) {
   return (
-    <Card>
+    <Card className={styles.seats}>
+      <SeatingHeader />
       <div>
         <div>
-          <span>Seats</span>
+          <Seats />
           <span>Seats</span>
           <span>Seats</span>
         </div>

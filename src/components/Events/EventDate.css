@@ -1,6 +1,8 @@
 .date-item {
   width: 4rem;
   height: 4rem;
+  background-color: #ef233c;
+  font-weight: 600;
   border: 1px solid white;
   margin-left: 1rem;
   display: flex;

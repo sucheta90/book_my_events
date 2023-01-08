@@ -1,0 +1,8 @@
+.header {
+  width: 95%;
+  height: 2.5rem;
+  /* border: 1px solid white; */
+  background-color: #00d5ff;
+  margin: 0 auto;
+  border-radius: 5px;
+}
