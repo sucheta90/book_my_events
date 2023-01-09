@@ -2,7 +2,27 @@
   width: 95%;
   height: 2.5rem;
   /* border: 1px solid white; */
-  background-color: #00d5ff;
+  background-color: #cae9ef;
   margin: 0 auto;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.pricing {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 2rem;
+}
+.seat_status {
+  display: flex;
+  /* background-color: red; */
+  display: flex;
+}
+
+.pricing span,
+.seat_status span {
+  display: flex;
+  margin-right: 1rem;
+  align-items: center;
 }

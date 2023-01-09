@@ -24,7 +24,7 @@ export default function App() {
       state: "VA",
       description:
         "No Signs Of Slowing Down Tour MORGAN WADE Meg McRee. Door opens 6:30PM",
-      chairs: {
+      price: {
         red: 100,
         green: 60,
         blue: 40,
@@ -46,7 +46,7 @@ export default function App() {
       city: "Doswell",
       state: "VA",
       description: "Catch the team live at the Meadow Event Park, Doswell, VA",
-      chairs: {
+      price: {
         red: 150,
         green: 90,
         blue: 60,
@@ -69,7 +69,7 @@ export default function App() {
       state: "VA",
       description:
         "The Renewed Norfolk Scope Arena is our Concert Zone. Scope will provide artist, fans with a safe, climate-controlled experience with upgraded amenities. Patriotic Festival Presents Sam Hunt With Jordan Davis",
-      chairs: {
+      price: {
         red: 100,
         green: 80,
         blue: 60,
@@ -92,7 +92,7 @@ export default function App() {
       state: "DC",
       description:
         "Come Watch the rising start live at the Capital One Arena. Also featuring Jimmy Allen. ",
-      chairs: {
+      price: {
         red: 350,
         green: 200,
         blue: 100,
@@ -116,7 +116,7 @@ export default function App() {
       state: "VA",
       description:
         "Kenny Chesney I Go Back 2023 Tour begins at the Bryce Jordan Center, Saturday, March 25 with Special Guest Kelsea Ballerini. A Full-On Taste of East Tennessee Brings the Music to the People!",
-      chairs: {
+      price: {
         red: 200,
         green: 160,
         blue: 100,
@@ -139,7 +139,7 @@ export default function App() {
       state: "MD",
       description:
         "Buy Thomas Rhett Parking in Baltimore passes from Vivid Seats for the concert on 06/21/2023 and shop with confidence thanks to our 100% Buyer Guarantee.",
-      chairs: {
+      price: {
         red: 300,
         green: 260,
         blue: 200,

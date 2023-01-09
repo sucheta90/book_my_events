@@ -6,7 +6,9 @@
   margin-top: 1rem;
   position: relative;
   border: none;
-  background-color: hsla(0, 0%, 100%, 0.5);
+  /* background-color: hsla(0, 0%, 100%, 0.5); */
+  background-color: #e2b2ea;
+  padding-bottom: 2rem;
 }
 .details button {
   background-color: #ef233c;
@@ -17,10 +19,11 @@
   /* display: none; */
 }
 .details p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 .image {
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
   margin-top: 2rem;
+  border-radius: 12px;
 }

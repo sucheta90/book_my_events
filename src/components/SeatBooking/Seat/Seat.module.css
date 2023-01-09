@@ -1,0 +1,88 @@
+.top {
+  width: 1.2rem;
+  height: 1rem;
+  background-color: white;
+  border-radius: 3px;
+  margin-bottom: 0.1rem;
+  pointer-events: none;
+  /* box-shadow: -0.2rem -0.8rem -0.5rem crimson; */
+}
+.bottom {
+  width: 0.9rem;
+  height: 0.2rem;
+  border-radius: 2px;
+  background-color: white;
+  pointer-events: none;
+  /* box-shadow: -0.2rem -0.5rem crimson; */
+}
+.seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+}
+
+.red {
+  background-image: linear-gradient(
+    to top,
+    #e00039,
+    #e3023b,
+    #e7053e,
+    #ea0740,
+    #ee0a43,
+    #f1184b,
+    #f42252,
+    #f72b5a,
+    #f93a68,
+    #fa4776,
+    #fb5383,
+    #fb5f8f
+  );
+  /* background-color: #ef233c; */
+  /* box-shadow: 0.01rem 0.01rem 1rem 0.01rem hsl(348, 93%, 54%); */
+  /* border: 0.01rem solid white; */
+}
+.green {
+  /* background-color: #06d64c; */
+  background-image: linear-gradient(
+    to top,
+    #00e06f,
+    #00de69,
+    #01dd62,
+    #03db5c,
+    #06d955,
+    #16db5a,
+    #21de5e,
+    #29e063,
+    #38e773,
+    #45ee82,
+    #52f491,
+    #5ffba0
+  );
+}
+.blue {
+  /* background-color: #1e22e8; */
+  background-image: linear-gradient(
+    to top,
+    #000ce0,
+    #0210de,
+    #0413dd,
+    #0616db,
+    #0818d9,
+    #171edb,
+    #2024dd,
+    #2829df,
+    #3533e5,
+    #403ceb,
+    #4b45f0,
+    #544ef6
+  );
+}
+.occupied {
+  background-color: grey;
+}
+
+.selected {
+  opacity: 60%;
+}

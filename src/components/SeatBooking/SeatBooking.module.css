@@ -10,3 +10,11 @@
   height: 60vh;
   padding-top: 1rem;
 }
+.main {
+  display: flex;
+  height: 80%;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
