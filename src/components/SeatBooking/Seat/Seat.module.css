@@ -79,10 +79,15 @@
     #544ef6
   );
 }
-.occupied {
+.occupied div {
+  background-image: none;
   background-color: grey;
 }
 
+.occupied {
+  pointer-events: none;
+}
+
 .selected {
-  opacity: 60%;
+  opacity: 40%;
 }

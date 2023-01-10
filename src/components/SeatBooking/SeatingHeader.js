@@ -4,20 +4,18 @@ import Card from "../UI/Card";
 import Seat from "./Seat/Seat";
 
 export default function SeatingHeader(props) {
-  console.log(`insde seatHeader ${props.price}`);
+  // console.log(`insde seatHeader ${JSON.stringify(props.price)}`);
   return (
     <Card className={styles.header}>
       <div className={styles.pricing}>
         <span>
-          <Seat status="available" className="red" />$ {props.price.price.red}
+          <Seat status="available" className="red" />$ {props.price.red}
         </span>
         <span>
-          <Seat status="available" className="green" /> ${" "}
-          {props.price.price.green}
+          <Seat status="available" className="green" /> ${props.price.green}
         </span>
         <span>
-          <Seat status="available" className="blue" /> ${" "}
-          {props.price.price.blue}
+          <Seat status="available" className="blue" /> ${props.price.blue}
         </span>
       </div>
       <div className={styles.seat_status}>

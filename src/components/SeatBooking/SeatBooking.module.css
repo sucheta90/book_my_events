@@ -7,14 +7,15 @@
 }
 .seats {
   margin-top: 1rem;
-  height: 60vh;
+  height: 80vh;
   padding-top: 1rem;
 }
 .main {
+  border: 1px solid black;
   display: flex;
   height: 80%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-right: 1rem;
   margin-left: 1rem;
 }

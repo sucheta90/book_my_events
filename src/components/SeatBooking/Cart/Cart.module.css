@@ -4,4 +4,7 @@
   /* border: 1px solid black; */
   background-color: #f9dcc4;
   border-radius: 12px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
 }

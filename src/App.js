@@ -3,10 +3,6 @@ import { useState } from "react";
 import "./App.css";
 import Events from "./components/Events/Events";
 import Header from "./components/Header/Header.js";
-import EventContainer from "./components/Events/EventContainer";
-// import EventDetails from "./components/Events/EventDetails";
-// import Photos from "..public/image";
-// import Card from "./components/UI/Card";
 
 export default function App() {
   const eventData = [
@@ -29,9 +25,13 @@ export default function App() {
         green: 60,
         blue: 40,
       },
-      // redClass: 100,
-      // greenClass: 60,
-      // blueClass: 40,
+      occupiedSeats: [
+        "Bay_1_Green_R_5C_3",
+        "Bay_1_Green_R_5C_4",
+        "Bay_2_Green_R_6C_3",
+        "Bay_2_Blue_R_7C_3",
+        "Bay_3_Red_R_2C_3",
+      ],
     },
     {
       id: "e2",
@@ -51,9 +51,11 @@ export default function App() {
         green: 90,
         blue: 60,
       },
-      // redClass: 150,
-      // greenClass: 90,
-      // blueClass: 60,
+      occupiedSeats: [
+        "Bay_1_Green_R_5C_1",
+        "Bay_2_Green_R_5C_3",
+        "Bay_3_Blue_R_9C_3",
+      ],
     },
     {
       id: "e3",
@@ -74,9 +76,12 @@ export default function App() {
         green: 80,
         blue: 60,
       },
-      // redClass: 100,
-      // greenClass: 80,
-      // blueClass: 60,
+      occupiedSeats: [
+        "Bay_2_Green_R_5C_3",
+        "Bay_2_Green_R_5C_4",
+        "Bay_2_Green_R_5C_5",
+        "Bay_2_Green_R_5C_6",
+      ],
     },
     {
       id: "e4",
@@ -97,9 +102,12 @@ export default function App() {
         green: 200,
         blue: 100,
       },
-      //   redClass: 350,
-      // greenClass: 200,
-      // blueClass: 100,
+      occupiedSeats: [
+        "Bay_1_Green_R_5C_4",
+        "Bay_1_Green_R_5C_5",
+        "Bay_2_Green_R_5C_3",
+        "Bay_2_Red_R_3C_3",
+      ],
     },
     {
       id: "e5",
@@ -115,15 +123,13 @@ export default function App() {
       city: "Charlottesville",
       state: "VA",
       description:
-        "Kenny Chesney I Go Back 2023 Tour begins at the Bryce Jordan Center, Saturday, March 25 with Special Guest Kelsea Ballerini. A Full-On Taste of East Tennessee Brings the Music to the People!",
+        "Kenny Chesney I Go Back 2023 Tour begins at the Bryce Jordan Center, Saturday, March 23 with Special Guest Kelsea Ballerini. A Full-On Taste of East Tennessee Brings the Music to the People!",
       price: {
         red: 200,
         green: 160,
         blue: 100,
       },
-      //   redClass: 200,
-      // greenClass: 120,
-      // blueClass: 80,
+      occupiedSeats: [],
     },
     {
       id: "e6",
@@ -144,16 +150,19 @@ export default function App() {
         green: 260,
         blue: 200,
       },
-      //   redClass: 300,
-      // greenClass: 250,
-      // blueClass: 200,
+      occupiedSeats: [
+        "Bay_1_Green_R_5C_3",
+        "Bay_1_Green_R_5C_4",
+        "Bay_2_Green_R_4C_1",
+        "Bay_3_Red_R_3C_3",
+      ],
     },
   ];
 
   return (
     <div className="App">
       <Header />
-      <Events events={eventData} child={<EventContainer />} />
+      <Events events={eventData} />
     </div>
   );
 }

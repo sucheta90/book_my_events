@@ -20,9 +20,9 @@ export default function EventContainer(props) {
     id: props.event.id,
     city: props.event.city,
   };
-  const price = {
-    price: props.event.price,
-  };
+  const price = props.event.price;
+
+  const occupiedSeats = props.event.occupiedSeats;
 
   const [show, setShow] = useState("");
   function showDetail(e) {
@@ -37,6 +37,7 @@ export default function EventContainer(props) {
   function hideSeating() {
     setShow("EventDetail");
   }
+  // console.log(`inside container ${occupiedSeats}`);
   return (
     <>
       <EventItem
@@ -61,7 +62,11 @@ export default function EventContainer(props) {
         />
       )}
       {show == "bookNow" && (
-        <SeatBooking hideSeatingHandler={hideSeating} price={price} />
+        <SeatBooking
+          hideSeatingHandler={hideSeating}
+          price={price}
+          occupiedSeats={occupiedSeats}
+        />
       )}
     </>
   );
