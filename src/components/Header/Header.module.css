@@ -1,13 +1,13 @@
 .Header {
-  width: 95%;
+  margin: 0 auto;
+  width: 100%;
   height: 3.5rem;
   background-color: #ef233c;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 2rem 0 2rem;
   border-radius: 12px;
-  box-shadow: -0.1rem 0.1rem 0.3rem #e5e5e5;
+  box-shadow: -0.3rem 0.3rem 0.6rem #686464;
 }
 .Header h2 {
   color: white;

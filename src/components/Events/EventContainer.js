@@ -47,6 +47,7 @@ export default function EventContainer(props) {
         time={props.event.time}
         location={props.event.location}
         city={props.event.city}
+        state={props.event.state}
         redClass={props.event.redClass}
         greenClass={props.event.greenclass}
         blueClass={props.event.blueclass}

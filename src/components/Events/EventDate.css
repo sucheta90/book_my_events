@@ -1,13 +1,22 @@
 .date-item {
-  width: 4rem;
-  height: 4rem;
+  width: 64px;
+  height: 64px;
   background-color: #ef233c;
   font-weight: 600;
   border: 1px solid white;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
+  position: absolute;
+  left: 2rem;
+}
+
+@media screen and (max-width: 960px) {
+  .date-item {
+    transform: scale(0.6);
+    left: 0;
+  }
 }
