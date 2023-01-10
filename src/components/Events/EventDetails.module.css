@@ -86,13 +86,16 @@
 @media screen and (max-width: 803px) {
   .button {
     left: 40%;
+    transition: left 0.4s;
   }
   .details a {
     left: 35%;
     transform: scale(0.7);
+    transition: transform 0.4s;
   }
   .details p {
     left: 30%;
+    transition: left 0.4s;
   }
 }
 @media screen and (max-width: 650px) {
@@ -100,11 +103,12 @@
     all: unset;
     width: 150px;
     height: 150px;
-    box-shadow: -0.3rem 0.3rem 0.6rem #686464;
+    box-shadow: -0.3rem 0.3rem 0.3rem #908b8b;
   }
   .details a {
     all: unset;
     transform: scale(0.8);
+    transition: transform 0.4s;
   }
   .details p {
     all: unset;
@@ -113,10 +117,14 @@
     padding-right: 1rem;
     letter-spacing: 0.5px;
     line-height: 15px;
+    color: #001524;
+    text-shadow: none;
+    font-weight: 500;
   }
   .button {
     all: unset;
     transform: scale(0.65);
+    transition: transform 0.4s;
   }
   .details {
     all: unset;
@@ -124,6 +132,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(243, 246, 249);
     border-radius: 12px;
     box-shadow: -0.3rem 0.3rem 0.6rem #686464;
     margin-top: 1rem;
