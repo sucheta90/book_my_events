@@ -51,12 +51,15 @@ export default function Cart(props) {
           </tr>
           <tr>
             <th>Total</th>
-            <td></td>
-            <td>{`$ ${
+            <td>{`$`}</td>
+            <td>{`${
               qty_red * price.red +
               qty_green * price.green +
               qty_red * price.blue
             }`}</td>
+            <td>
+              <button className={styles.btn}>CheckOut</button>
+            </td>
           </tr>
         </tbody>
       </table>

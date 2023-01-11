@@ -21,20 +21,20 @@ export default function SeatBooking(props) {
   return (
     <Card className={styles.seats}>
       <SeatingHeader price={props.price} />
-      <div className={styles.main}>
-        {
-          <Gallery
-            selectedSeats={selectedSeats}
-            occupiedSeats={props.occupiedSeats}
-            handleSeatSelection={handleSeatSelection}
-          />
-        }
-        <Cart price={props.price} selectedSeats={selectedSeats} />
-      </div>
-      <div className={styles.btn}>
+      {/* <div className={styles.main}> */}
+
+      <Gallery
+        selectedSeats={selectedSeats}
+        occupiedSeats={props.occupiedSeats}
+        handleSeatSelection={handleSeatSelection}
+        hideSeatingHandler={props.hideSeatingHandler}
+      />
+      <Cart price={props.price} selectedSeats={selectedSeats} />
+      {/* </div> */}
+      {/* <div className={styles.btn}>
         <button onClick={props.hideSeatingHandler}>Go Back</button>
         <button>CheckOut</button>
-      </div>
+      </div> */}
     </Card>
   );
 }

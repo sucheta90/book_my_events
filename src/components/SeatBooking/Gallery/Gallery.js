@@ -7,6 +7,9 @@ export default function Gallery(props) {
   //   console.log(`inside Gallery.js ${props.occupiedSeats}`);
   return (
     <div className={styles.Gallery}>
+      <button className={styles.btn} onClick={props.hideSeatingHandler}>
+        Go Back
+      </button>
       <Stage />
       <div className={styles.all_bays}>
         <Bay

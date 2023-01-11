@@ -2,33 +2,32 @@
   background-color: #bfc2d6;
   margin: 0 auto;
   margin-top: 1rem;
-  max-width: 890px;
-  height: 500px;
-  max-height: 500px;
+  width: 100%;
+  max-width: 60rem;
+  min-height: 500px;
+  /* border: 1px solid red; */
   position: relative;
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
 }
 
-.main {
-  /* border: 1px solid red; */
-  width: 850px;
-  margin: 0 auto;
-  height: 400px;
-  max-height: 400px;
-  display: flex;
-  align-items: center;
+.btn {
+  position: absolute;
+  min-width: 10rem;
+  bottom: 0;
+  left: 38%;
+  border: 1px solid red;
+  padding-bottom: 2rem;
 }
 .btn button {
   background-color: #ef233c;
   border-radius: 12px;
-  width: 98px;
+  width: 50%;
   height: 32px;
   font-weight: 600;
   margin: 10px;
-  /* position: absolute; */
 }
 
-@media screen and (max-width: 948px) {
+/* @media screen and (max-width: 948px) {
   .main {
     width: 700px;
     transition: width 0.4s;
@@ -72,5 +71,6 @@
 @media screen and (max-width: 771px) {
   .seat {
     all: unset;
+    height: fit-content;
   }
-}
+} */

@@ -1,48 +1,42 @@
-.two {
-  width: 300px;
-  height: 8px;
+/* .two {
+  max-width: 68%;
+  height: 0.5rem;
   background-color: #4a4e69;
   margin: 0 auto;
   position: absolute;
   top: 0;
-  left: 12%;
+  left: 18%;
   border-radius: 10px;
-}
-.one {
+} */
+/* .one {
   width: 80px;
-  height: 8px;
+  height: 0.5rem;
   background-color: #4a4e69;
   transform: rotate(-45deg);
   position: absolute;
-  left: -14px;
+  left: 23px;
   top: 33%;
   border-radius: 10px;
-}
-.three {
+} */
+/* .three {
   width: 80px;
-  height: 8px;
+  height: 0.5rem;
   background-color: #4a4e69;
   transform: rotate(45deg);
   position: absolute;
-  right: -11px;
+  right: 3px;
   top: 33%;
-  border-radius: 10px;
-}
+  border-radius: 10px; */
+/* } */
 
 .stage {
-  width: 400px;
+  width: 80%;
+  background-color: rgb(218, 165, 165);
   margin: 0 auto;
   margin-top: 1rem;
   position: relative;
-  /* border: 1px solid white; */
-  height: 5rem;
-}
-.stage h3 {
-  padding-top: 2rem;
-}
-
-@media screen and (max-width: 820px) {
-  .stage {
-    margin-left: 1.5rem;
-  }
+  border: 1px solid white;
+  min-height: 2rem;
+  border-radius: 70%;
+  /* height: 5rem; */
 }
