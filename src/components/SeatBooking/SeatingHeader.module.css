@@ -1,12 +1,16 @@
 .header {
-  width: 95%;
+  max-width: 900px;
   height: 2.5rem;
   /* border: 1px solid white; */
-  background-color: #cae9ef;
+  background-color: #f4df76;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .pricing {
   display: flex;
@@ -16,8 +20,8 @@
 }
 .seat_status {
   display: flex;
-  /* background-color: red; */
-  display: flex;
+  position: absolute;
+  left: 62%;
 }
 
 .pricing span,
@@ -25,4 +29,16 @@
   display: flex;
   margin-right: 1rem;
   align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+@media screen and (max-width: 1120px) {
+  .seat_status {
+    left: 50%;
+  }
+}
+@media screen and (max-width: 1105px) {
+  .seat_status {
+    right: 0;
+  }
 }

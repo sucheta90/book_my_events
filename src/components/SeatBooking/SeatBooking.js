@@ -31,11 +31,10 @@ export default function SeatBooking(props) {
         }
         <Cart price={props.price} selectedSeats={selectedSeats} />
       </div>
-
-      <button className={styles.btn} onClick={props.hideSeatingHandler}>
-        Go Back
-      </button>
-      <button className={styles.btn}>CheckOut</button>
+      <div className={styles.btn}>
+        <button onClick={props.hideSeatingHandler}>Go Back</button>
+        <button>CheckOut</button>
+      </div>
     </Card>
   );
 }

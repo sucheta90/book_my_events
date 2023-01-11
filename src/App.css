@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
   text-align: center;
+  transition: 0.4s;
+}
+button {
+  border: none;
+  box-shadow: -0.3rem 0.3rem 0.2rem rgb(61, 59, 59);
 }
 
 .App {
@@ -15,7 +20,7 @@
   padding-right: 1rem;
   padding-left: 1rem;
   margin: 0 auto;
-  background-color: #2b2d42;
+  background-color: #d8daef;
   /* display: flex;
   flex-direction: column; */
 }
