@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import Events from "./components/Events/Events";
 import Header from "./components/Header/Header.js";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   const eventData = [
@@ -138,6 +139,7 @@ export default function App() {
     <div className="App">
       <Header />
       <Events events={eventData} />
+      <Footer />
     </div>
   );
 }
