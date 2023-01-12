@@ -32,11 +32,16 @@
 
 .pricing span,
 .seat_status span {
+  width: 90px;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   font-weight: 600;
   font-size: 14px;
   margin-right: 1rem;
+}
+.seat_status span {
+  width: 115px;
 }
 /* @media screen and (max-width: 1120px) {
   .seat_status {

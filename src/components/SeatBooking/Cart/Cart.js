@@ -8,7 +8,6 @@ export default function Cart(props) {
   let qty_red = 0;
   let qty_green = 0;
   let qty_blue = 0;
-  let amount = 0;
   for (let id of selectedSeats) {
     let keyWord = id.split("_");
     if (keyWord[2] === "Red") {
@@ -55,7 +54,7 @@ export default function Cart(props) {
             <td>{`${
               qty_red * price.red +
               qty_green * price.green +
-              qty_red * price.blue
+              qty_blue * price.blue
             }`}</td>
             <td>
               <button className={styles.btn}>CheckOut</button>
