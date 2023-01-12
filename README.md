@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# BookMyEvents
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was build with React, is a simple app, which has a list of events to choose from and gives the users a feel of an actual ticketing site.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+To watch the live demo please visit https://bookmyeventssm.netlify.app
 
-### `npm start`
+## Disclaimer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project is intended for learning only and does not promote any kind of business practices. The pictures have been downloaded from https://unsplash.com/ and is used for demo only. Date of events are randomly generated. Event data has been collected from google.com
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- This project features a list of events in the near future. The date of events are not real.
+- User can select an event of their choice and find out more details on clicking the button _More Info_.
+- The detailed section features a heading in Red font. This is a link to the google map directions.
+- The _Book Now_ button will open a theater layout, to setect/ deselect seats. The seats are color coded and are priced at different range.
+- The cart shows the number of seat selected under each category and the total amount.
+- The checkout page is being worked on at the moment and will be available soon.
+- The project can adjust to different screen screen sizes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Summary
 
-### `npm run build`
+The project consists of multiple smaller functional components and their own stylesheets. The purpose of creating smaller components was done to manage the project in an optimized way.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Using State Hook
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The below example is specific to the theater view.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+export default function SeatBooking(props) {
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  function handleSeatSelection(e) {
+    setSelectedSeats((prevState) => {
+      if (prevState.includes(e.target.id)) {
+        prevState = prevState.filter((id) => id != e.target.id);
+        return prevState;
+      }
+      return [...prevState, e.target.id];
+    });
+  }
+  return (
+    <Card className={styles.seats}>
+      <SeatingHeader price={props.price} />
+      <Gallery
+        selectedSeats={selectedSeats}
+        occupiedSeats={props.occupiedSeats}
+        handleSeatSelection={handleSeatSelection}
+        hideSeatingHandler={props.hideSeatingHandler}
+      />
+      <Cart price={props.price} selectedSeats={selectedSeats} />
+    </Card>
+  );
+}
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A State has been initialized in the parent container named _SeatBooking_, that has an empty array which will be used to keep a track of the selected seats and on change will rerender the component which will help reflect the changes in the child components.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Details - on the code above
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- I have created a parent container _SeatBooking_ that holds the below child components:
+- _SeatingHeader_ : This hold information like seats priced as per category and seat status. This information is passed as props through layers from App.js (conatains the hard coded Event Data).
+- _Gallery_ : This is the component that shows the seat rows and columns.Seats are of different colors, this is for users to identify the price range. When a seat is selected, the corresponding seat Id is then added to the array maintained in _state_. This change in state thus reflect on the cart view as well.
+- _Cart_: The cart extracts the Id and looks for the keyword, here is the _Color_. Accordingly updates the cart view.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Implementation
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. The Checkout page.
+2. The look of the theater on smaller screen has to be redesigned.
+3. Authorized users will be able to add events to the list, which will be sorted based on event dates.
+4. Pie charts to show popularity of the event/ tickets sold till date (TBD).

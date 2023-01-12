@@ -7,7 +7,6 @@ import Gallery from "./Gallery/Gallery";
 import Cart from "./Cart/Cart";
 
 export default function SeatBooking(props) {
-  // console.log(`inside SeatBooking ${JSON.stringify(props)}`);
   const [selectedSeats, setSelectedSeats] = useState([]);
   function handleSeatSelection(e) {
     setSelectedSeats((prevState) => {
@@ -21,8 +20,6 @@ export default function SeatBooking(props) {
   return (
     <Card className={styles.seats}>
       <SeatingHeader price={props.price} />
-      {/* <div className={styles.main}> */}
-
       <Gallery
         selectedSeats={selectedSeats}
         occupiedSeats={props.occupiedSeats}
@@ -30,11 +27,6 @@ export default function SeatBooking(props) {
         hideSeatingHandler={props.hideSeatingHandler}
       />
       <Cart price={props.price} selectedSeats={selectedSeats} />
-      {/* </div> */}
-      {/* <div className={styles.btn}>
-        <button onClick={props.hideSeatingHandler}>Go Back</button>
-        <button>CheckOut</button>
-      </div> */}
     </Card>
   );
 }
