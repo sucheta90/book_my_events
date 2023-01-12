@@ -62,7 +62,8 @@ A State has been initialized in the parent container named _SeatBooking_, that h
 
 - I have created a parent container _SeatBooking_ that holds the below child components:
 - _SeatingHeader_ : This hold information like seats priced as per category and seat status. This information is passed as props through layers from App.js (conatains the hard coded Event Data).
-- _Gallery_ : This is the component that shows the seat rows and columns.Seats are of different colors, this is for users to identify the price range. When a seat is selected, the corresponding seat Id is then added to the array maintained in _state_. This change in state thus reflect on the cart view as well.
+- _Gallery_ : This is the component that shows the seat rows and columns.
+  Seats are of different colors, this is for users to identify the price range. When a seat is selected, the corresponding seat Id is then added to the array maintained in _state_. This changes the parent state thus reflect chnages on the sibling compoenent _Cart_.
 - _Cart_: The cart extracts the Id and looks for the keyword, here is the _Color_. Accordingly updates the cart view.
 
 ## Future Implementation
@@ -71,3 +72,4 @@ A State has been initialized in the parent container named _SeatBooking_, that h
 2. The look of the theater on smaller screen has to be redesigned.
 3. Authorized users will be able to add events to the list, which will be sorted based on event dates.
 4. Pie charts to show popularity of the event/ tickets sold till date (TBD).
+5. The will be fetched using API instead of being hard coded.
