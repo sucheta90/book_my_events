@@ -22,6 +22,10 @@
   margin-left: 50%;
   margin-bottom: 1rem;
   font-size: 0.8rem;
+  text-shadow: none;
+}
+.btn:hover {
+  transform: scale(1.2);
 }
 /* @media screen and (max-width: 930px) {
   * {

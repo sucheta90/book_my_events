@@ -24,14 +24,19 @@
   margin-top: 1px;
 }
 .btn {
-  background-color: #ef233c;
+  /* background-color: #ef233c; */
+  background-color: transparent;
   border-radius: 12px;
   width: 10%;
-  font-size: 0.8rem;
+  font-size: 2rem;
+  font-weight: 1200;
+  color: black;
+  outline: 1px solid black;
   min-height: 1.8rem;
   font-weight: 600;
   margin-top: 1rem;
   margin-right: 80%;
+  text-shadow: none;
 }
 
 /* @media screen and (max-width: 1050px) {

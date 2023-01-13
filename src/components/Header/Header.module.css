@@ -13,6 +13,7 @@
 .Header h2 {
   color: white;
   overflow: hidden;
+  text-shadow: none;
 }
 
 @media screen and (max-width: 768px) {

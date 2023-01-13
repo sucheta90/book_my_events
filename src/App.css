@@ -5,7 +5,8 @@
 }
 button {
   border: none;
-  box-shadow: -0.3rem 0.3rem 0.2rem rgb(61, 59, 59);
+  cursor: pointer;
+  /* box-shadow: -0.3rem 0.3rem 0.2rem rgb(61, 59, 59); */
 }
 
 .App {

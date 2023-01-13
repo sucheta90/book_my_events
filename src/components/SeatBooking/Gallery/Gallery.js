@@ -8,7 +8,7 @@ export default function Gallery(props) {
   return (
     <div className={styles.Gallery}>
       <button className={styles.btn} onClick={props.hideSeatingHandler}>
-        Go Back
+        &larr;
       </button>
       <Stage />
       <div className={styles.all_bays}>

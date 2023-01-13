@@ -20,7 +20,11 @@
   width: 100px;
   height: 32px;
   margin: 10px;
+  text-shadow: none;
   /* display: none; */
+}
+.details button:hover {
+  transform: scale(1.2);
 }
 .link {
   position: absolute;

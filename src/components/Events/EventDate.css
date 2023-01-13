@@ -13,6 +13,9 @@
   position: absolute;
   left: 2rem;
 }
+.date-item div {
+  text-shadow: none;
+}
 
 @media screen and (max-width: 960px) {
   .date-item {

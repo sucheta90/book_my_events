@@ -5,7 +5,7 @@ import styles from "./EventDetails.module.css";
 export default function EventDetails(props) {
   return (
     <Card className={styles.details}>
-      <img src={props.event.image} className={styles.image} />
+      <img src={props.event.image} className={styles.image} alt="" />
 
       <a
         href={props.event.direction}
@@ -17,7 +17,7 @@ export default function EventDetails(props) {
       </a>
       <p className={styles.description}>{props.event.description}</p>
       <div className={styles.button}>
-        <button onClick={props.hideDetailHandler}>Go Back</button>
+        <button onClick={props.hideDetailHandler}>Hide Info</button>
         <button id="bookNow-btn" onClick={props.bookNowHandler}>
           Book now
         </button>
