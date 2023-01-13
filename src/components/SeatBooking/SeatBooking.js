@@ -11,7 +11,7 @@ export default function SeatBooking(props) {
   function handleSeatSelection(e) {
     setSelectedSeats((prevState) => {
       if (prevState.includes(e.target.id)) {
-        prevState = prevState.filter((id) => id != e.target.id);
+        prevState = prevState.filter((id) => id !== e.target.id);
         return prevState;
       }
       return [...prevState, e.target.id];
