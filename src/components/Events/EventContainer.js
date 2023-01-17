@@ -55,14 +55,14 @@ export default function EventContainer(props) {
         onClick={showDetail}
         toShow={show}
       />
-      {show == "EventDetail" && (
+      {show === "EventDetail" && (
         <EventDetails
           hideDetailHandler={hideDetail}
           bookNowHandler={bookNow}
           event={eventDetail}
         />
       )}
-      {show == "bookNow" && (
+      {show === "bookNow" && (
         <SeatBooking
           hideSeatingHandler={hideSeating}
           price={price}

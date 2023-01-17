@@ -15,17 +15,18 @@
 .btn {
   background-color: #ef233c;
   border-radius: 12px;
-  min-width: 20%;
+  /* min-width: 20%;
   width: 90px;
-  height: 32px;
+  height: 32px; */
   font-weight: 600;
   margin-left: 50%;
   margin-bottom: 1rem;
   font-size: 0.8rem;
+  padding: 0.8em 1.5em;
   text-shadow: none;
 }
 .btn:hover {
-  transform: scale(1.2);
+  transform: scale(0.9);
 }
 /* @media screen and (max-width: 930px) {
   * {

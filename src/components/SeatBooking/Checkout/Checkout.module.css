@@ -1,0 +1,28 @@
+.Checkout {
+  z-index: 21;
+  width: 70%;
+  height: 70%;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  background-color: aliceblue;
+  border-radius: 12px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: inherit;
+}
+.form input {
+  margin-left: 1em;
+  text-shadow: none;
+  color: black;
+}
+.form label {
+  text-shadow: none;
+  color: navy;
+}

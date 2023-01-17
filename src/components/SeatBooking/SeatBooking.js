@@ -5,9 +5,19 @@ import styles from "./SeatBooking.module.css";
 import SeatingHeader from "./SeatingHeader";
 import Gallery from "./Gallery/Gallery";
 import Cart from "./Cart/Cart";
+import Layout from "./Layout/Layout";
+import Checkout from "./Checkout/Checkout";
 
 export default function SeatBooking(props) {
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [showCheckout, setShowCheckout] = useState("");
+
+  function handleCheckout(e) {
+    setShowCheckout("Checkoutpage");
+  }
+  function handleHideCheckout(e) {
+    setShowCheckout("");
+  }
   function handleSeatSelection(e) {
     setSelectedSeats((prevState) => {
       if (prevState.includes(e.target.id)) {
@@ -26,7 +36,17 @@ export default function SeatBooking(props) {
         handleSeatSelection={handleSeatSelection}
         hideSeatingHandler={props.hideSeatingHandler}
       />
-      <Cart price={props.price} selectedSeats={selectedSeats} />
+      <Cart
+        price={props.price}
+        selectedSeats={selectedSeats}
+        handleCheckout={handleCheckout}
+        validate={showCheckout}
+      />
+      {showCheckout === "Checkoutpage" && (
+        <Layout handleHideCheckout={handleHideCheckout}>
+          <Checkout handleHideCheckout={props.handleHideCheckout} />
+        </Layout>
+      )}
     </Card>
   );
 }
