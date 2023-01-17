@@ -1,10 +1,11 @@
 .Checkout {
   z-index: 21;
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  max-width: 500px;
+  height: 50%;
   position: fixed;
-  top: 10%;
-  left: 10%;
+  top: 25%;
+  left: 25%;
   background-color: aliceblue;
   border-radius: 12px;
 }
@@ -17,6 +18,13 @@
   justify-content: space-evenly;
   border-radius: inherit;
 }
+.month {
+  margin-left: 1em;
+  color: white;
+  text-shadow: none;
+  background-color: hsl(217, 13%, 31%);
+}
+
 .form input {
   margin-left: 1em;
   text-shadow: none;
@@ -25,4 +33,11 @@
 .form label {
   text-shadow: none;
   color: navy;
+}
+.error {
+  margin: 1em;
+  color: hsl(217, 13%, 31%);
+  text-shadow: none;
+  font-size: 0.8em;
+  font-weight: 500;
 }
