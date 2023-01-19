@@ -1,49 +1,89 @@
 .Checkout {
   z-index: 21;
   width: 50%;
-  max-width: 500px;
-  height: 50%;
+  max-width: 450px;
+  min-width: 300px;
+  /* height: 50%; */
   position: fixed;
-  top: 25%;
-  left: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: aliceblue;
   border-radius: 12px;
 }
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 80%;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  border-radius: inherit;
-  padding: 1em 1em 0.75em 2.5em;
-  text-align: left;
-}
-.month {
-  margin-left: 1em;
-  color: white;
+.checkout__header {
+  padding: 0.75em;
+  background-color: #ef233c;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   text-shadow: none;
+  text-align: center;
+}
+.checkout__header h3 {
+  text-align: center;
+  text-shadow: none;
+  display: inline-block;
+}
+.checkout__header button {
+  overflow: hidden;
+  margin-top: 10px;
+  border-radius: 5px;
+  float: right;
+  font-size: 1.2em;
+  padding: 0 0.6em;
+  height: 2em;
   background-color: hsl(217, 13%, 31%);
+  transition: transform 0.1s;
+}
+.checkout__header button:hover,
+.checkout__header button:focus {
+  transform: translateY(-3px);
+  transition: transform 0.4s;
+}
+.form,
+.form table {
+  width: 100%;
 }
 
-.form input {
-  margin-left: 1em;
-  text-shadow: none;
-  color: black;
+.form table tbody input {
+  border-radius: 5px;
+  border: none;
+  margin-top: 1em;
+  padding: 0.4em 0;
 }
-.form label {
+.form td {
+  font-size: 0.8rem;
   text-shadow: none;
   color: navy;
 }
+
 .error {
   margin: 1em;
   color: hsl(217, 13%, 31%);
   text-shadow: none;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: 500;
 }
-.year {
+
+.paynow {
+  background-color: #ef233c;
+  border-radius: 12px;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-size: 0.7em;
+  padding: 0.75em 1em;
   text-shadow: none;
-  color: black;
+  opacity: 40%;
+  pointer-events: none;
+}
+.paynow_active {
+  background-color: #ef233c;
+  border-radius: 12px;
+  font-weight: 600;
+  margin: 0 auto;
+  font-size: 0.7em;
+  padding: 0.75em 1em;
+  text-shadow: none;
 }

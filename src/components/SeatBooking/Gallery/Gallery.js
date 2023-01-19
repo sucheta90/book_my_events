@@ -31,6 +31,7 @@ export default function Gallery(props) {
           onClick={props.handleSeatSelection}
         />
       </div>
+      <div className={styles.message}>Select Seats to proceed</div>
     </div>
   );
 }

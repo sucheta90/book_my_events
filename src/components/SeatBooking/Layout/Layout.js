@@ -4,7 +4,9 @@ import styles from "./Layout.module.css";
 
 export default function Layout(props) {
   const portalElement = document.getElementById("portal");
-  const layout = <div className={styles.Layout} />;
+  const layout = (
+    <div className={styles.Layout} onClick={props.handleHideCheckout} />
+  );
   return (
     <>
       {createPortal(layout, portalElement)}

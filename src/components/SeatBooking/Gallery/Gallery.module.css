@@ -6,8 +6,6 @@
   left: 5%;
   top: 10%;
   background-color: hsl(0, 0%, 100%);
-  padding-bottom: 2rem;
-  /* border: 1px solid black; */
   display: inline-block;
   overflow: scroll;
 }
@@ -40,7 +38,15 @@
 }
 .btn:hover {
   transform: scale(1.1);
-  /* background-color: lightsalmon; */
+}
+.message {
+  background-color: #2b2d42;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-shadow: none;
+  color: #fff;
+  padding: 0.7em 0;
 }
 
 /* @media screen and (max-width: 1050px) {

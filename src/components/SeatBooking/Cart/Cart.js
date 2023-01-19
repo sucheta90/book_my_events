@@ -58,9 +58,8 @@ export default function Cart(props) {
             }`}</td>
             <td>
               <button
-                className={styles.btn}
+                className={props.isSelected ? styles.btn_active : styles.btn}
                 onClick={props.handleCheckout}
-                disabled={props.isSelected ? "" : "disabled"}
               >
                 CheckOut
               </button>

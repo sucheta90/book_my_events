@@ -1,0 +1,16 @@
+.year,
+.month {
+  margin-left: 1em;
+  text-shadow: none;
+  border-radius: 5px;
+  color: white;
+  background-color: hsl(217, 13%, 31%);
+}
+.expiration {
+  margin-top: 1em;
+}
+.expiration span {
+  padding: 0 1em;
+  text-shadow: none;
+  color: rgb(42, 42, 50);
+}

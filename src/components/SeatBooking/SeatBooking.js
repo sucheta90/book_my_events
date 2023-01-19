@@ -13,6 +13,7 @@ export default function SeatBooking(props) {
   const [showCheckout, setShowCheckout] = useState("");
 
   function handleCheckout(e) {
+    console.log(selectedSeats);
     setShowCheckout("Checkoutpage");
   }
   function handleHideCheckout(e) {
@@ -46,7 +47,7 @@ export default function SeatBooking(props) {
       />
       {showCheckout === "Checkoutpage" && (
         <Layout handleHideCheckout={handleHideCheckout}>
-          <Checkout handleHideCheckout={props.handleHideCheckout} />
+          <Checkout hideCheckout={handleHideCheckout} />
         </Layout>
       )}
     </Card>

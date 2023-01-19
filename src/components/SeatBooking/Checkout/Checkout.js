@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Checkout.module.css";
+import Expiration from "./Expiration";
 
 export default function Checkout(props) {
   // Name field validation and error message handling:
@@ -64,84 +65,91 @@ export default function Checkout(props) {
     setEmailIsTouched(true);
   }
   // ***********End of Card validation ***********
-  // Expiration Year- validation
-
-  //Function create New Date , <select>/ <option> for Years to show dynamically.
-  let currentYear = new Date().getFullYear();
-  let arrayOfYears = [];
-  for (let i = 0; i < 12; i++) {
-    arrayOfYears.push(<option>{currentYear + i}</option>);
-  }
-
-  // Function create <select>/ <option> for Months to show dynamically.
 
   return (
     <div className={styles.Checkout}>
-      <h3>BookMyEvents</h3>
+      <div className={styles.checkout__header}>
+        <h3>BookMyEvents</h3>
+        <button onClick={props.hideCheckout}>X</button>
+      </div>
+
       <form action="" className={styles.form}>
-        <label>
-          Name on Card
-          <input
-            type="text"
-            value={name}
-            onChange={handleChangeName}
-            onBlur={handleTouched}
-          />
-          {isError && (
-            <div className={styles.error}>
-              Should be at least 2 charaters long{" "}
-            </div>
-          )}
-        </label>
-        <label>
-          Card Number
-          <input
-            type="text"
-            value={card}
-            onChange={handleCardInfo}
-            onBlur={touchedCard}
-          />
-          {cardError && (
-            <div className={styles.error}>
-              Invalid card number. Number should be of length 15 or 16 digits
-              long
-            </div>
-          )}
-        </label>
-        <label>
-          Expiration
-          <select className={styles.month}></select>
-          {/* <input type="number" placeholder="Year" /> */}
-          <select className={styles.year}>{arrayOfYears}</select>
-        </label>
-        <label>
-          CVV
-          <input
-            type="number"
-            value={cvv}
-            onChange={handleCvvInfo}
-            onBlur={touchedCvv}
-          />
-          {cvvError && (
-            <div className={styles.error}>
-              Please enter valid cvv code. Should have 3 or 4 digits.
-            </div>
-          )}
-        </label>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            onBlur={touchedEmail}
-          />
-          {emailError && (
-            <div className={styles.error}>
-              Invalid email. Please enter a valid email.
-            </div>
-          )}
-        </label>
+        <table>
+          <tbody>
+            <tr>
+              <td>Name on Card</td>
+              <td>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={handleChangeName}
+                  onBlur={handleTouched}
+                />
+                {isError && (
+                  <div className={styles.error}>
+                    Should be at least 2 charaters long{" "}
+                  </div>
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td>Card Number</td>
+              <td>
+                <input
+                  type="text"
+                  value={card}
+                  onChange={handleCardInfo}
+                  onBlur={touchedCard}
+                />
+                {cardError && (
+                  <div className={styles.error}>
+                    Invalid card number. Number should be of length 15 or 16
+                    digits long
+                  </div>
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td>Expiration</td>
+              <td>
+                <Expiration />
+              </td>
+            </tr>
+            <tr>
+              <td>CVV</td>
+              <td>
+                <input
+                  type="number"
+                  value={cvv}
+                  onChange={handleCvvInfo}
+                  onBlur={touchedCvv}
+                />
+                {cvvError && (
+                  <div className={styles.error}>
+                    Please enter valid cvv code. Should have 3 or 4 digits.
+                  </div>
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  onBlur={touchedEmail}
+                />
+                {emailError && (
+                  <div className={styles.error}>
+                    Invalid email. Please enter a valid email.
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button className={styles.paynow}>Pay now</button>
       </form>
     </div>
   );
