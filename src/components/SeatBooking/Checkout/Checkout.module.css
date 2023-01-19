@@ -13,10 +13,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  align-items: center;
+  height: 80%;
+  align-items: flex-start;
   justify-content: space-evenly;
   border-radius: inherit;
+  padding: 1em 1em 0.75em 2.5em;
+  text-align: left;
 }
 .month {
   margin-left: 1em;
@@ -40,4 +42,8 @@
   text-shadow: none;
   font-size: 0.8em;
   font-weight: 500;
+}
+.year {
+  text-shadow: none;
+  color: black;
 }

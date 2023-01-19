@@ -66,8 +66,18 @@ export default function Checkout(props) {
   // ***********End of Card validation ***********
   // Expiration Year- validation
 
+  //Function create New Date , <select>/ <option> for Years to show dynamically.
+  let currentYear = new Date().getFullYear();
+  let arrayOfYears = [];
+  for (let i = 0; i < 12; i++) {
+    arrayOfYears.push(<option>{currentYear + i}</option>);
+  }
+
+  // Function create <select>/ <option> for Months to show dynamically.
+
   return (
     <div className={styles.Checkout}>
+      <h3>BookMyEvents</h3>
       <form action="" className={styles.form}>
         <label>
           Name on Card
@@ -100,21 +110,9 @@ export default function Checkout(props) {
         </label>
         <label>
           Expiration
-          <select className={styles.month}>
-            <option>JAN/ 01</option>
-            <option>FEB/ 02</option>
-            <option>MAR/ 03</option>
-            <option>APR/ 04</option>
-            <option>MAY/ 05</option>
-            <option>JUN/ 06</option>
-            <option>JUL/ 07</option>
-            <option>AUG/ 08</option>
-            <option>SEP/ 09</option>
-            <option>OCT/ 10</option>
-            <option>NOV/ 11</option>
-            <option>DEC/ 12</option>
-          </select>
-          <input type="number" placeholder="Year" />
+          <select className={styles.month}></select>
+          {/* <input type="number" placeholder="Year" /> */}
+          <select className={styles.year}>{arrayOfYears}</select>
         </label>
         <label>
           CVV

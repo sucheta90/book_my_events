@@ -27,6 +27,7 @@ export default function SeatBooking(props) {
       return [...prevState, e.target.id];
     });
   }
+  let isSelected = selectedSeats.length >= 1;
   return (
     <Card className={styles.seats}>
       <SeatingHeader price={props.price} />
@@ -41,6 +42,7 @@ export default function SeatBooking(props) {
         selectedSeats={selectedSeats}
         handleCheckout={handleCheckout}
         validate={showCheckout}
+        isSelected={isSelected}
       />
       {showCheckout === "Checkoutpage" && (
         <Layout handleHideCheckout={handleHideCheckout}>
