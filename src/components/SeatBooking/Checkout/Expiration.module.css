@@ -1,16 +1,23 @@
 .year,
 .month {
-  margin-left: 1em;
+  /* margin-left: 0.5em; */
   text-shadow: none;
   border-radius: 5px;
   color: white;
   background-color: hsl(217, 13%, 31%);
 }
 .expiration {
+  width: 60%;
   margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .expiration span {
-  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-shadow: none;
   color: rgb(42, 42, 50);
+  margin-bottom: 1.2em;
 }

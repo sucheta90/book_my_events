@@ -1,69 +1,59 @@
 import React, { useState } from "react";
 import styles from "./Checkout.module.css";
 import Expiration from "./Expiration";
+import useInputValidation from "../../../hooks/input-validation";
 
 export default function Checkout(props) {
-  // Name field validation and error message handling:
-  const [name, setName] = useState("");
-  const [nameTouched, setNameTouched] = useState(false);
-
-  // This functions is called onChage for Name.
-  function handleChangeName(e) {
-    setName(e.target.value);
-    setNameTouched(true);
+  let isNameValid = (value) => value.trim().length >= 2;
+  const [isFormValid, setIsFormValid] = useState(false);
+  function isCvvValid(value) {
+    let cvvRegex = /^\d{3,4}$/g;
+    return cvvRegex.test(value);
   }
-  // Handler function callled onBlur event.
-  function handleTouched(e) {
-    setNameTouched(true);
+  function isEmailValid(value) {
+    return /^\w+@\w+\.(com|net|in|org|us|info)$/.test(value);
+  }
+  function isCardValid(value) {
+    let myRegex = /^\d{15,16}$/g;
+    return myRegex.test(value);
   }
 
-  let isError = name.trim().length <= 2 && nameTouched;
-  // ***********End of name validation ***********
+  const {
+    inputValue: name,
+    handleInputValue: handleChangeName,
+    handleIftouched: handleTouched,
+    isError,
+  } = useInputValidation(isNameValid);
 
   // Card - state maintenance, validation and error handling.
-  const [card, setCard] = useState(""); // state defined for Card number.
-  const [cardTouched, setCardTouched] = useState(false);
-  let myRegex = /^\d{15,16}$/g;
+  const {
+    inputValue: card,
+    handleInputValue: handleCardInfo,
+    handleIftouched: touchedCard,
+    isError: cardError,
+  } = useInputValidation(isCardValid);
 
-  let cardError = myRegex.test(card) === false && cardTouched;
-  function handleCardInfo(e) {
-    setCard(e.target.value);
-    setCardTouched(true);
-  }
-  function touchedCard(e) {
-    setCardTouched(true);
-  }
+  console.log(`card error ${cardError}`);
   // ***********End of Card validation ***********
 
   // CVV - state maintenance, validation and error handling.
-  const [cvv, setCvv] = useState(""); // state defined for card CVV.
-  const [cvvTouched, setCvvTouched] = useState(false);
-  let cvvRegex = /^\d{3,4}$/g;
-
-  let cvvError = cvvRegex.test(cvv) === false && cvvTouched;
-  function handleCvvInfo(e) {
-    setCvv(e.target.value);
-    setCvvTouched(true);
-  }
-  function touchedCvv(e) {
-    setCvvTouched(true);
-  }
+  const {
+    inputValue: cvv,
+    handleInputValue: handleCvvInfo,
+    handleIftouched: touchedCvv,
+    isError: cvvError,
+  } = useInputValidation(isCvvValid);
 
   //***********End of CVV validation ***********
 
   // Email - state maintenance, validation and error handling.
-  const [email, setEmail] = useState("");
-  const [emailIsTouched, setEmailIsTouched] = useState(false);
-  let emailError =
-    /^\w+@\w+\.(com|net|in|org|us|info)$/.test(email) === false &&
-    emailIsTouched;
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-    setEmailIsTouched(true);
-  }
-  function touchedEmail(e) {
-    setEmailIsTouched(true);
-  }
+  const {
+    inputValue: email,
+    handleInputValue: handleEmailChange,
+    handleIftouched: touchedEmail,
+    isError: emailError,
+  } = useInputValidation(isEmailValid);
+
   // ***********End of Card validation ***********
 
   return (
@@ -74,82 +64,82 @@ export default function Checkout(props) {
       </div>
 
       <form action="" className={styles.form}>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name on Card</td>
-              <td>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={handleChangeName}
-                  onBlur={handleTouched}
-                />
-                {isError && (
-                  <div className={styles.error}>
-                    Should be at least 2 charaters long{" "}
-                  </div>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Card Number</td>
-              <td>
-                <input
-                  type="text"
-                  value={card}
-                  onChange={handleCardInfo}
-                  onBlur={touchedCard}
-                />
-                {cardError && (
-                  <div className={styles.error}>
-                    Invalid card number. Number should be of length 15 or 16
-                    digits long
-                  </div>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Expiration</td>
-              <td>
-                <Expiration />
-              </td>
-            </tr>
-            <tr>
-              <td>CVV</td>
-              <td>
-                <input
-                  type="number"
-                  value={cvv}
-                  onChange={handleCvvInfo}
-                  onBlur={touchedCvv}
-                />
-                {cvvError && (
-                  <div className={styles.error}>
-                    Please enter valid cvv code. Should have 3 or 4 digits.
-                  </div>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  onBlur={touchedEmail}
-                />
-                {emailError && (
-                  <div className={styles.error}>
-                    Invalid email. Please enter a valid email.
-                  </div>
-                )}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button className={styles.paynow}>Pay now</button>
+        <div className={styles.entries}>
+          <label for="name">Name on Card</label>
+          <input
+            key="form_name"
+            id="name"
+            type="text"
+            value={name}
+            onChange={handleChangeName}
+            onBlur={handleTouched}
+          />
+        </div>
+        {isError && (
+          <div className={styles.error}>
+            Should be at least 2 charaters long{" "}
+          </div>
+        )}
+
+        <div className={styles.entries}>
+          <label for="card">Card Number</label>
+          <input
+            id="card"
+            key="form_card"
+            type="text"
+            value={card}
+            onChange={handleCardInfo}
+            onBlur={touchedCard}
+          />
+        </div>
+        {cardError && (
+          <div className={styles.error}>
+            Invalid card number. Number should be of length 15 or 16 digits long
+          </div>
+        )}
+        <div className={styles.entries}>
+          <div className={styles.expiration}>
+            <label for="expiration" className={styles.exp}>
+              Expiration
+            </label>
+            <Expiration />
+            <div className={styles.cvv}>
+              <label>CVV </label>
+              <input
+                id="cvv"
+                key="form_cvv"
+                type="number"
+                value={cvv}
+                onChange={handleCvvInfo}
+                onBlur={touchedCvv}
+              />
+            </div>
+          </div>
+        </div>
+        {cvvError && (
+          <div className={styles.error}>
+            Please enter valid cvv code. Should have 3 or 4 digits.
+          </div>
+        )}
+        <div className={styles.entries}>
+          <label>Email</label>
+          <input
+            id="email"
+            key="form_email"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            onBlur={touchedEmail}
+          />
+        </div>
+        {emailError && (
+          <div className={styles.error}>
+            Invalid email. Please enter a valid email.
+          </div>
+        )}
+        <div>
+          <button className={styles.paynow}>Pay now</button>
+        </div>
       </form>
     </div>
   );

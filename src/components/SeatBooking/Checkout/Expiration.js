@@ -4,9 +4,9 @@ import styles from "./Expiration.module.css";
 export default function Expiration(props) {
   //Function create New Date , <select>/ <option> for Years to show dynamically.
   let currentYear = new Date().getFullYear();
-  let arrayOfYears = [<option></option>];
+  let arrayOfYears = [<option key="blank_year"></option>];
   for (let i = 0; i < 12; i++) {
-    arrayOfYears.push(<option>{currentYear + i}</option>);
+    arrayOfYears.push(<option key={i}>{currentYear + i}</option>);
   }
   const [year, setYear] = useState("Year");
   function handleSelectYear(e) {
@@ -15,15 +15,15 @@ export default function Expiration(props) {
   }
 
   // Function create <select>/ <option> for Months to show dynamically.
-  let monthsOfYear = [<option></option>];
+  let monthsOfYear = [<option key="blank_month"></option>];
   if (year === currentYear) {
     let month = new Date().getMonth() + 1;
     for (let i = month; i <= 12; i++) {
-      monthsOfYear.push(<option>{i}</option>);
+      monthsOfYear.push(<option key={`${month}`}>{i}</option>);
     }
   } else {
     for (let i = 0; i < 12; i++) {
-      monthsOfYear.push(<option>{i + 1}</option>);
+      monthsOfYear.push(<option key={`${i}month`}>{i + 1}</option>);
     }
   }
 

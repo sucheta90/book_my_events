@@ -2,7 +2,7 @@
   z-index: 21;
   width: 50%;
   max-width: 450px;
-  min-width: 300px;
+  min-width: 320px;
   /* height: 50%; */
   position: fixed;
   top: 50%;
@@ -40,28 +40,56 @@
   transform: translateY(-3px);
   transition: transform 0.4s;
 }
-.form,
-.form table {
+.form {
   width: 100%;
+  padding: 0 1em;
 }
-
-.form table tbody input {
-  border-radius: 5px;
-  border: none;
-  margin-top: 1em;
-  padding: 0.4em 0;
+.entries {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  /* border: 1px solid black; */
+  color: rgb(37, 37, 42);
+  margin: 1em 0 0.5px 0;
 }
-.form td {
-  font-size: 0.8rem;
+.entries label,
+.entries input {
   text-shadow: none;
-  color: navy;
+  color: rgb(37, 37, 42);
 }
-
+.entries label {
+  width: 30%;
+  text-align: left;
+}
+.entries input {
+  width: 70%;
+  height: 2em;
+}
+.cvv {
+  text-align: center;
+  font-size: 0.8em;
+  width: 20%;
+  border-radius: 5px;
+}
+.entries .exp {
+  width: 35%;
+}
+.expiration {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 1em 0;
+}
 .error {
-  margin: 1em;
+  text-align: right;
+  margin: 0 auto;
   color: hsl(217, 13%, 31%);
   text-shadow: none;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: 500;
 }
 

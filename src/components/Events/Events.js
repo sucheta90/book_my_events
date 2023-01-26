@@ -15,5 +15,10 @@ export default function Events(props) {
     );
   });
 
-  return <div className={styles.event_list}>{eventItem}</div>;
+  return (
+    <div className={styles.event_list}>
+      {props.error && <p>{props.error}</p>}
+      {!props.error && eventItem}
+    </div>
+  );
 }
