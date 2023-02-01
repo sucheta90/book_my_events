@@ -23,6 +23,7 @@ export default function EventContainer(props) {
   const price = props.event.price;
 
   const occupiedSeats = props.event.occupiedSeats;
+  const eventId = props.event.id;
 
   const [show, setShow] = useState("");
   function showDetail(e) {
@@ -67,6 +68,7 @@ export default function EventContainer(props) {
           hideSeatingHandler={hideSeating}
           price={price}
           occupiedSeats={occupiedSeats}
+          eventId={eventId}
         />
       )}
     </>

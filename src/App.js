@@ -50,7 +50,7 @@ export default function App() {
   useEffect(() => {
     if (isLoading) {
       fetchData();
-      console.log("after handle fetch call");
+      // console.log("after handle fetch call");
     }
   }, [isLoading]);
 

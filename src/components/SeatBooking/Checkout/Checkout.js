@@ -4,8 +4,9 @@ import Expiration from "./Expiration";
 import useInputValidation from "../../../hooks/input-validation";
 
 export default function Checkout(props) {
-  let isNameValid = (value) => value.trim().length >= 2;
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [isFormValid, setIsFromValid] = useState(false);
+  let isNameValid = (value) =>
+    value.trim().length >= 2 && /^[A-Za-z]+$/.test(value);
   function isCvvValid(value) {
     let cvvRegex = /^\d{3,4}$/g;
     return cvvRegex.test(value);
@@ -17,12 +18,23 @@ export default function Checkout(props) {
     let myRegex = /^\d{15,16}$/g;
     return myRegex.test(value);
   }
+  function formValidation(e) {
+    if (
+      checkingIfNameValid &&
+      checkingIfCardValid &&
+      checkingIfCvvValid &&
+      checkingIfEmailValid
+    ) {
+      setIsFromValid(true);
+    }
+  }
 
   const {
     inputValue: name,
     handleInputValue: handleChangeName,
     handleIftouched: handleTouched,
     isError,
+    isValid: checkingIfNameValid,
   } = useInputValidation(isNameValid);
 
   // Card - state maintenance, validation and error handling.
@@ -31,9 +43,10 @@ export default function Checkout(props) {
     handleInputValue: handleCardInfo,
     handleIftouched: touchedCard,
     isError: cardError,
+    isValid: checkingIfCardValid,
   } = useInputValidation(isCardValid);
 
-  console.log(`card error ${cardError}`);
+  // console.log(`card error ${cardError}`);
   // ***********End of Card validation ***********
 
   // CVV - state maintenance, validation and error handling.
@@ -42,6 +55,7 @@ export default function Checkout(props) {
     handleInputValue: handleCvvInfo,
     handleIftouched: touchedCvv,
     isError: cvvError,
+    isValid: checkingIfCvvValid,
   } = useInputValidation(isCvvValid);
 
   //***********End of CVV validation ***********
@@ -52,6 +66,7 @@ export default function Checkout(props) {
     handleInputValue: handleEmailChange,
     handleIftouched: touchedEmail,
     isError: emailError,
+    isValid: checkingIfEmailValid,
   } = useInputValidation(isEmailValid);
 
   // ***********End of Card validation ***********
@@ -63,9 +78,9 @@ export default function Checkout(props) {
         <button onClick={props.hideCheckout}>X</button>
       </div>
 
-      <form action="" className={styles.form}>
+      <form action="" className={styles.form} onChange={formValidation}>
         <div className={styles.entries}>
-          <label for="name">Name on Card</label>
+          <label htmlFor="name">Name on Card</label>
           <input
             key="form_name"
             id="name"
@@ -77,12 +92,13 @@ export default function Checkout(props) {
         </div>
         {isError && (
           <div className={styles.error}>
-            Should be at least 2 charaters long{" "}
+            Should be at least 2 charaters long and should contain alphabets
+            only
           </div>
         )}
 
         <div className={styles.entries}>
-          <label for="card">Card Number</label>
+          <label htmlFor="card">Card Number</label>
           <input
             id="card"
             key="form_card"
@@ -99,16 +115,16 @@ export default function Checkout(props) {
         )}
         <div className={styles.entries}>
           <div className={styles.expiration}>
-            <label for="expiration" className={styles.exp}>
+            <label htmlFor="expiration" className={styles.exp}>
               Expiration
             </label>
-            <Expiration />
+            <Expiration id="expiration" />
             <div className={styles.cvv}>
-              <label>CVV </label>
+              <label htmlFor="cvv">CVV </label>
               <input
                 id="cvv"
                 key="form_cvv"
-                type="number"
+                type="text"
                 value={cvv}
                 onChange={handleCvvInfo}
                 onBlur={touchedCvv}
@@ -122,7 +138,7 @@ export default function Checkout(props) {
           </div>
         )}
         <div className={styles.entries}>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
             id="email"
             key="form_email"
@@ -138,7 +154,12 @@ export default function Checkout(props) {
           </div>
         )}
         <div>
-          <button className={styles.paynow}>Pay now</button>
+          <button
+            className={isFormValid ? styles.paynow_active : styles.paynow}
+            onClick={props.handlePayementConfirmation}
+          >
+            Pay now
+          </button>
         </div>
       </form>
     </div>

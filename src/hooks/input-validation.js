@@ -10,12 +10,14 @@ export default function useInputValidation(isValidValue) {
   function handleIftouched(e) {
     setIsTouched(true);
   }
-  const isError = !isValidValue(inputValue) && isTouched;
+  const isValid = isValidValue(inputValue);
+  const isError = !isValid && isTouched;
 
   return {
     inputValue,
     handleInputValue,
     handleIftouched,
     isError,
+    isValid,
   };
 }
