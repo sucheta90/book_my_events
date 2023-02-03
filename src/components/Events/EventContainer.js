@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import EventItem from "./EventItem";
 import EventDetails from "./EventDetails";
 import SeatBooking from "../SeatBooking/SeatBooking";
-import styles from "./EventContainer.module.css";
+// import styles from "./EventContainer.module.css";
 
 // import Events from "./Events";
 

@@ -4,7 +4,6 @@ import Stage from "./Stage/Stage";
 import Bay from "./Bay/Bay";
 
 export default function Gallery(props) {
-  //   console.log(`inside Gallery.js ${props.occupiedSeats}`);
   return (
     <div className={styles.Gallery}>
       <button className={styles.btn} onClick={props.hideSeatingHandler}>
@@ -31,7 +30,11 @@ export default function Gallery(props) {
           onClick={props.handleSeatSelection}
         />
       </div>
-      <div className={styles.message}>Select Seats to proceed</div>
+      <div className={styles.message}>
+        {props.errorMessage
+          ? `${props.errorMessage}`
+          : "Select Seats to proceed"}
+      </div>
     </div>
   );
 }

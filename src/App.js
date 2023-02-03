@@ -38,6 +38,7 @@ export default function App() {
           obj.id = key;
           latestEvents.push(obj);
         }
+
         setEventData(latestEvents);
       } catch (error) {
         console.log(`inside catch`);
@@ -53,6 +54,16 @@ export default function App() {
       // console.log("after handle fetch call");
     }
   }, [isLoading]);
+  console.log(eventData);
+  let sortedEventData = eventData.sort((a, b) => {
+    let dateA = new Date(a.date);
+    let dateB = new Date(b.date);
+    if (dateA > dateB) {
+      return 1;
+    } else if (dateB > dateA) {
+      return -1;
+    }
+  });
 
   return (
     <div className="App">
@@ -65,7 +76,7 @@ export default function App() {
           onClick={handleAppReload}
         />
       ) : (
-        <Events events={eventData} />
+        <Events events={sortedEventData} />
       )}
 
       <Footer />

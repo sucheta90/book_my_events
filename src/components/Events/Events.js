@@ -14,7 +14,7 @@ export default function Events(props) {
       />
     );
   });
-
+  console.log(`inside Events.js ${eventItem}`);
   return (
     <div className={styles.event_list}>
       {props.error && <p>{props.error}</p>}

@@ -7,11 +7,16 @@ import Cart from "./Cart/Cart";
 import Layout from "./Layout/Layout";
 import Checkout from "./Checkout/Checkout";
 import Confirmation from "./Checkout/Confirmation";
+import CheckoutError from "./Checkout/CheckoutError";
 
 export default function SeatBooking(props) {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showCheckout, setShowCheckout] = useState("");
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isSeatAvailable, setIsSeatAvailable] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [seatUnavailableMessage, setSeatUnavailableMessage] = useState("");
+  const [confirmationInfo, setConfirmationInfo] = useState({ title: "" });
 
   // Will fetch event data from database to compare the occupied seats to current selectedSeats array to avaoid duplication.
 
@@ -32,10 +37,18 @@ export default function SeatBooking(props) {
 
     for (let i = 0; i < selectedSeats.length; i++) {
       if (occupiedSeats.includes(selectedSeats[i])) {
-        console.log("can not coomplete action seat unavailable");
-        return;
+        setIsSeatAvailable(false);
+        setSeatUnavailableMessage(
+          "Can not complete action. Seat unavailable. Please select Seats that are available."
+        );
+        setShowCheckout("");
+        throw new Error(
+          "Can not complete action. Seat unavailable. Please select Seats that are available."
+        );
       }
     }
+    setConfirmationInfo((confirmationInfo.title = data.title));
+
     occupiedSeats = [...occupiedSeats, ...selectedSeats];
     console.log(`updated occupiedSeats: ${occupiedSeats}`);
     return occupiedSeats;
@@ -52,7 +65,7 @@ export default function SeatBooking(props) {
   function handlePayementConfirmation(e) {
     e.preventDefault();
     setIsConfirmed(false);
-    console.log("Clicked pay now");
+    setSeatUnavailableMessage("");
     fetchData()
       .then(checkResponseToParseData)
       .then(compareSeats)
@@ -62,13 +75,13 @@ export default function SeatBooking(props) {
         setIsConfirmed(true);
       })
       .catch((error) => {
-        console.log(`Something went wrong!!! ${error}`);
+        console.log(`something went wrong!! ${error}`);
       });
   }
   // end of fetch function
-
   function handleCheckout(e) {
     console.log(selectedSeats);
+    setShowModal(true);
     setShowCheckout("Checkoutpage");
   }
   function handleHideCheckout(e) {
@@ -83,7 +96,11 @@ export default function SeatBooking(props) {
       return [...prevState, e.target.id];
     });
   }
+  function closeModal() {
+    setShowModal(false);
+  }
   let isSelected = selectedSeats.length >= 1;
+
   return (
     <Card className={styles.seats}>
       <SeatingHeader price={props.price} />
@@ -100,16 +117,27 @@ export default function SeatBooking(props) {
         validate={showCheckout}
         isSelected={isSelected}
       />
-      {showCheckout === "Checkoutpage" && (
-        <Layout handleHideCheckout={handleHideCheckout}>
-          {!isConfirmed && (
+      {showModal && (
+        <Layout hideModal={closeModal}>
+          {showCheckout === "Checkoutpage" && !isConfirmed && (
             <Checkout
               hideCheckout={handleHideCheckout}
               selectedSeats={selectedSeats}
               handlePayementConfirmation={handlePayementConfirmation}
             />
           )}
-          {isConfirmed && <Confirmation />}
+          {!isSeatAvailable && (
+            <CheckoutError
+              error={seatUnavailableMessage}
+              hideModal={closeModal}
+            />
+          )}
+          {isConfirmed && (
+            <Confirmation
+              confirmationInfo={confirmationInfo}
+              hideModal={closeModal}
+            />
+          )}
         </Layout>
       )}
     </Card>
