@@ -1,5 +1,4 @@
-.year,
-.month {
+.year {
   /* margin-left: 0.5em; */
   text-shadow: none;
   border-radius: 5px;
@@ -20,4 +19,20 @@
   text-shadow: none;
   color: rgb(42, 42, 50);
   margin-bottom: 1.2em;
+}
+.month_active {
+  /* margin-left: 0.5em; */
+  text-shadow: none;
+  border-radius: 5px;
+  color: white;
+  background-color: hsl(217, 13%, 31%);
+}
+.month_inactive {
+  /* margin-left: 0.5em; */
+  text-shadow: none;
+  border-radius: 5px;
+  color: white;
+  background-color: hsl(217, 13%, 31%);
+  pointer-events: none;
+  opacity: 40%;
 }

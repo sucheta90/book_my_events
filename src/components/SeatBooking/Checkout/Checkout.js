@@ -6,13 +6,15 @@ import useInputValidation from "../../../hooks/input-validation";
 export default function Checkout(props) {
   const [isFormValid, setIsFromValid] = useState(false);
   let isNameValid = (value) =>
-    value.trim().length >= 2 && /^[A-Za-z]+$/.test(value);
+    value.trim().length >= 2 && /^[A-Za-z\s]*$/.test(value);
   function isCvvValid(value) {
     let cvvRegex = /^\d{3,4}$/g;
     return cvvRegex.test(value);
   }
   function isEmailValid(value) {
-    return /^\w+@\w+\.(com|net|in|org|us|info)$/.test(value);
+    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      value
+    );
   }
   function isCardValid(value) {
     let myRegex = /^\d{15,16}$/g;
