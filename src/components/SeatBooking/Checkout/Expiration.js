@@ -1,9 +1,25 @@
 import React, { useState } from "react";
 import styles from "./Expiration.module.css";
+import useInputValidation from "../../../hooks/input-validation";
 
 export default function Expiration(props) {
   const [year, setYear] = useState("");
   const [isYearSelected, setIsYearSelected] = useState(false);
+
+  function isCvvValid(value) {
+    let cvvRegex = /^\d{3,4}$/g;
+    return cvvRegex.test(value);
+  }
+  // CVV - state maintenance, validation and error handling.
+  const {
+    inputValue: cvv,
+    handleInputValue: handleCvvInfo,
+    handleIftouched: touchedCvv,
+    isError: cvvError,
+    isValid: checkingIfCvvValid,
+  } = useInputValidation(isCvvValid);
+
+  //***********End of CVV validation ***********
   //Function create New Date , <select>/ <option> for Years to show dynamically.
   let currentYear = new Date().getFullYear();
   let arrayOfYears = [<option value="" key="blank_year"></option>];
@@ -46,23 +62,41 @@ export default function Expiration(props) {
   }
 
   return (
-    <div className={styles.expiration}>
-      <span>
-        Year
-        <select className={styles.year} onChange={handleSelectYear}>
-          {arrayOfYears}
-        </select>
-      </span>
-      <span>
-        Month
-        <select
-          className={
-            isYearSelected ? styles.month_active : styles.month_inactive
-          }
-        >
-          {monthsOfYear}
-        </select>
-      </span>
-    </div>
+    <section>
+      <div className={styles.expiration}>
+        <span>
+          Year
+          <select className={styles.year} onChange={handleSelectYear}>
+            {arrayOfYears}
+          </select>
+        </span>
+        <span>
+          Month
+          <select
+            className={
+              isYearSelected ? styles.month_active : styles.month_inactive
+            }
+          >
+            {monthsOfYear}
+          </select>
+        </span>
+        <span className={styles.cvv}>
+          <label>CVV</label>
+          <input
+            type="text"
+            id="cvv"
+            key="form_cvv"
+            value={cvv}
+            onChange={handleCvvInfo}
+            onBlur={touchedCvv}
+          />
+        </span>
+      </div>
+      {cvvError && (
+        <div className={styles.error}>
+          Please enter valid cvv code. Should have 3 or 4 digits.
+        </div>
+      )}
+    </section>
   );
 }

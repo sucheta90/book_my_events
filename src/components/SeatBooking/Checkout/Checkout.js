@@ -7,10 +7,10 @@ export default function Checkout(props) {
   const [isFormValid, setIsFromValid] = useState(false);
   let isNameValid = (value) =>
     value.trim().length >= 2 && /^[A-Za-z\s]*$/.test(value);
-  function isCvvValid(value) {
-    let cvvRegex = /^\d{3,4}$/g;
-    return cvvRegex.test(value);
-  }
+  // function isCvvValid(value) {
+  //   let cvvRegex = /^\d{3,4}$/g;
+  //   return cvvRegex.test(value);
+  // }
   function isEmailValid(value) {
     return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
       value
@@ -21,12 +21,7 @@ export default function Checkout(props) {
     return myRegex.test(value);
   }
   function formValidation(e) {
-    if (
-      checkingIfNameValid &&
-      checkingIfCardValid &&
-      checkingIfCvvValid &&
-      checkingIfEmailValid
-    ) {
+    if (checkingIfNameValid && checkingIfCardValid && checkingIfEmailValid) {
       setIsFromValid(true);
     }
   }
@@ -50,17 +45,6 @@ export default function Checkout(props) {
 
   // console.log(`card error ${cardError}`);
   // ***********End of Card validation ***********
-
-  // CVV - state maintenance, validation and error handling.
-  const {
-    inputValue: cvv,
-    handleInputValue: handleCvvInfo,
-    handleIftouched: touchedCvv,
-    isError: cvvError,
-    isValid: checkingIfCvvValid,
-  } = useInputValidation(isCvvValid);
-
-  //***********End of CVV validation ***********
 
   // Email - state maintenance, validation and error handling.
   const {
@@ -121,7 +105,7 @@ export default function Checkout(props) {
               Expiration
             </label>
             <Expiration id="expiration" />
-            <div className={styles.cvv}>
+            {/* <div className={styles.cvv}>
               <label htmlFor="cvv">CVV </label>
               <input
                 id="cvv"
@@ -131,14 +115,14 @@ export default function Checkout(props) {
                 onChange={handleCvvInfo}
                 onBlur={touchedCvv}
               />
-            </div>
+            </div> */}
           </div>
         </div>
-        {cvvError && (
+        {/* {cvvError && (
           <div className={styles.error}>
             Please enter valid cvv code. Should have 3 or 4 digits.
           </div>
-        )}
+        )} */}
         <div className={styles.entries}>
           <label htmlFor="email">Email</label>
           <input
