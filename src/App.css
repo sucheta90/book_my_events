@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   text-align: center;
   transition: 0.4s;
 }
@@ -10,16 +12,17 @@ button {
 }
 
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: white;
-  min-width: 320px;
-  max-width: 1200px;
   width: 100%;
-  /* padding: 1rem; */
   margin: 0 auto;
   background-color: #d8daef;
-  position: relative;
+  padding: 1em 0 0 0;
+}
+.container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

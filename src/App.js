@@ -65,19 +65,21 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
-      {isError ? (
-        <Errorwindow
-          errorMessage={
-            <h3>Sorry We can't process your request please try again</h3>
-          }
-          onClick={handleAppReload}
-        />
-      ) : (
-        <Events events={eventData} handleAppReload={handleAppReload} />
-      )}
+      <div className="container">
+        <Header />
+        {isError ? (
+          <Errorwindow
+            errorMessage={
+              <h3>Sorry We can't process your request please try again</h3>
+            }
+            onClick={handleAppReload}
+          />
+        ) : (
+          <Events events={eventData} handleAppReload={handleAppReload} />
+        )}
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

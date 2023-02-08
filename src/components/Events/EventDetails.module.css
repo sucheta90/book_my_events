@@ -1,79 +1,85 @@
 .details {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 1em;
   position: relative;
-  background: white;
   color: #001524;
-  height: 20vw;
-  max-height: 400px;
   display: flex;
   align-items: center;
-  padding-right: 3rem;
-  line-height: 15px;
+  justify-content: center;
+  padding: 1em;
+  background-color: #fff;
 }
-
+.image {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: -0.3rem 0.3rem 0.6rem #686464;
+}
+.event_description {
+  width: 100%;
+  padding: 0.75em;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  /* border: 2px solid blue; */
+}
+.event_image {
+  width: 45%;
+  padding: 0;
+}
 .details button {
   background-color: #ef233c;
   border-radius: 12px;
   font-weight: 600;
   text-align: center;
-  width: 100px;
-  height: 32px;
-  margin: 10px;
+  margin-left: 10px;
   text-shadow: none;
-  /* display: none; */
+  padding: 0.5em 1em;
 }
 .details button:hover {
-  transform: scale(1.2);
+  transform: scale(80%);
 }
 .link {
-  position: absolute;
-  top: 2px;
-  left: 55%;
   text-decoration: none;
   padding-right: 2rem;
+  margin-bottom: 2%;
 }
 .link h4 {
   color: #ef233c;
   text-shadow: none;
 }
-.details p {
-  margin-top: 1rem;
-  color: #071b29;
-  font-weight: 500;
-  line-height: 15px;
-  text-align: center;
+.event_intro {
+  font-size: 0.8em;
   text-shadow: none;
-}
-.description {
-  position: absolute;
-  font-size: 12px;
-  left: 50%;
-  top: 20%;
-  text-align: center;
-  margin-right: 10px;
   color: #001524;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 2%;
 }
-.image {
-  width: 20vw;
-  height: 20vw;
-  max-width: 400px;
-  max-height: 400px;
-  margin: 0 auto;
-  border-radius: 12px;
-  align-self: center;
-  position: absolute;
-  left: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+@media screen and (max-width: 700px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .event_description {
+    align-self: center;
+  }
+  .link {
+    transform: scale(0.8);
+    margin: 0 auto;
+  }
+  .buttons {
+    transform: scale(0.8);
+  }
+  .buttons button {
+    margin-top: 10px;
+  }
 }
-.button {
-  position: absolute;
-  left: 59%;
-  top: 70%;
-}
-@media screen and (max-width: 956px) {
+
+/* @media screen and (max-width: 956px) {
   * {
     transition: transform 0.4s;
   }
@@ -142,4 +148,4 @@
     margin-top: 1rem;
     padding-top: 1rem;
   }
-}
+} */

@@ -1,17 +1,16 @@
 .date-item {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   background-color: #ef233c;
   font-weight: 600;
-  border: 1px solid white;
-  /* margin-left: 1rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  position: absolute;
-  left: 2rem;
+  padding: 0.5em;
+  margin-right: auto;
+  margin-left: 2%;
 }
 .date-item div {
   text-shadow: none;

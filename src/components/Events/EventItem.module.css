@@ -6,16 +6,14 @@
 }
 
 .info_btn {
-  font-size: 12px;
-  height: 32px;
-  width: 96px;
-  /* margin-right: 1rem; */
+  font-size: 0.8em;
+  padding: 0.5em 1em;
   border-radius: 12px;
   background-color: #ef233c;
   font-weight: 600;
-  position: absolute;
-  right: 1rem;
   text-shadow: none;
+  margin-left: auto;
+  margin-right: 2%;
 }
 .info_btn:hover {
   transform: scale(80%);
@@ -30,15 +28,19 @@
   background-color: #2b2d42;
 }
 .title {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  /* border: 1px solid greenyellow; */
   letter-spacing: 8%;
 }
 .mainInfo {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  line-height: 10px;
+  justify-content: space-between;
+  line-height: 25px;
   position: absolute;
+  /* border: 1px solid red; */
+  flex: 2 2;
 }
 .mainInfo span,
 .mainInfo p {
@@ -54,7 +56,6 @@
   }
   .info_btn {
     transform: scale(0.6);
-    right: 0;
   }
 }
 @media screen and (max-width: 553px) {
