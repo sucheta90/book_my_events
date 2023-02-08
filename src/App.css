@@ -10,36 +10,16 @@ button {
 }
 
 .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: white;
   min-width: 320px;
   max-width: 1200px;
-  width: 100vw;
-  min-height: 100vh;
-  height: 100%;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  width: 100%;
+  /* padding: 1rem; */
   margin: 0 auto;
   background-color: #d8daef;
-  /* display: flex;
-  flex-direction: column; */
-}
-.dashboard {
-  width: 95%;
-  height: 100%;
-  border: none;
-  display: flex;
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  /* align-items: center; */
-  justify-content: space-between;
-  /* background-color: white; */
-}
-@media screen and (min-width: 300px) and(max-width:768px) {
-  .App {
-    width: 100vw;
-  }
+  position: relative;
 }

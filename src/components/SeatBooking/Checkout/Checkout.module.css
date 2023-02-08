@@ -1,0 +1,119 @@
+.Checkout {
+  z-index: 21;
+  width: 50%;
+  max-width: 450px;
+  min-width: 320px;
+  /* height: 50%; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: aliceblue;
+  border-radius: 12px;
+}
+.checkout__header {
+  padding: 0.75em;
+  background-color: #ef233c;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  text-shadow: none;
+  text-align: center;
+}
+.checkout__header h3 {
+  text-align: center;
+  text-shadow: none;
+  display: inline-block;
+}
+.checkout__header button {
+  overflow: hidden;
+  margin-top: 10px;
+  border-radius: 5px;
+  float: right;
+  font-size: 1.2em;
+  padding: 0 0.6em;
+  height: 2em;
+  background-color: hsl(217, 13%, 31%);
+  transition: transform 0.1s;
+}
+.checkout__header button:hover,
+.checkout__header button:focus {
+  transform: translateY(-3px);
+  transition: transform 0.4s;
+}
+.form {
+  width: 100%;
+  padding: 0 1em;
+}
+.entries {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  /* border: 1px solid black; */
+  color: rgb(37, 37, 42);
+  margin: 1em 0 0.5px 0;
+}
+.entries label,
+.entries input {
+  text-shadow: none;
+  color: rgb(37, 37, 42);
+}
+.entries label {
+  width: 30%;
+  text-align: left;
+}
+.entries input {
+  width: 70%;
+  height: 2em;
+}
+.cvv {
+  text-align: center;
+  font-size: 0.8em;
+  width: 20%;
+  border-radius: 5px;
+}
+.entries .exp {
+  width: 50%;
+}
+.expiration {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 1em 0;
+}
+.error {
+  text-align: right;
+  margin: 0 auto;
+  color: hsl(217, 13%, 31%);
+  text-shadow: none;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.paynow {
+  background-color: #ef233c;
+  border-radius: 12px;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-size: 0.7em;
+  padding: 0.75em 1em;
+  text-shadow: none;
+  opacity: 40%;
+  pointer-events: none;
+}
+.paynow_active {
+  background-color: #ef233c;
+  border-radius: 12px;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-size: 0.7em;
+  padding: 0.75em 1em;
+  text-shadow: none;
+}

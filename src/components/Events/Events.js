@@ -11,9 +11,15 @@ export default function Events(props) {
         key={props.events.indexOf(event)}
         id={`event_container_${props.events.indexOf(event)}`}
         event={event}
+        handleAppReload={props.handleAppReload}
       />
     );
   });
-
-  return <div className={styles.event_list}>{eventItem}</div>;
+  // console.log(`inside Events.js ${eventItem}`);
+  return (
+    <div className={styles.event_list}>
+      {props.error && <p>{props.error}</p>}
+      {!props.error && eventItem}
+    </div>
+  );
 }

@@ -57,7 +57,12 @@ export default function Cart(props) {
               qty_blue * price.blue
             }`}</td>
             <td>
-              <button className={styles.btn}>CheckOut</button>
+              <button
+                className={props.isSelected ? styles.btn_active : styles.btn}
+                onClick={props.handleCheckout}
+              >
+                CheckOut
+              </button>
             </td>
           </tr>
         </tbody>

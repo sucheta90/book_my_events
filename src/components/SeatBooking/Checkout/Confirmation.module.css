@@ -1,0 +1,47 @@
+.confirmation {
+  z-index: 21;
+  width: 50%;
+  height: 50%;
+  max-width: 450px;
+  min-width: 320px;
+  /* height: 50%; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 12px;
+}
+.confirmation_header {
+  text-align: center;
+  color: black;
+  text-shadow: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  position: relative;
+  padding: 10px;
+}
+.confirmation_header::after {
+  content: "✔";
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  width: 17px;
+  height: 17px;
+  color: green;
+}
+.confirmation_btn_home {
+  background-color: #ef233c;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.5em;
+  margin: 0 auto;
+  margin-top: 40%;
+  margin-bottom: 2em;
+  font-size: 0.7em;
+  padding: 0.75em 1em;
+  text-shadow: none;
+}
+.confirmation_btn_home:hover {
+  transform: scale(1.2);
+  transition: 0.4s;
+}

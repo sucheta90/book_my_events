@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Seat.module.css";
 
 export default function Seat(props) {
-  // console.log(`inside seat.js ${props.occupiedSeats}`);
   let status = "";
   let selectedSeats = props.selectedSeats;
 

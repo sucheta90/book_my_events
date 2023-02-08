@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import EventItem from "./EventItem";
 import EventDetails from "./EventDetails";
 import SeatBooking from "../SeatBooking/SeatBooking";
-import styles from "./EventContainer.module.css";
+// import styles from "./EventContainer.module.css";
 
 // import Events from "./Events";
 
@@ -23,6 +23,7 @@ export default function EventContainer(props) {
   const price = props.event.price;
 
   const occupiedSeats = props.event.occupiedSeats;
+  const eventId = props.event.id;
 
   const [show, setShow] = useState("");
   function showDetail(e) {
@@ -55,18 +56,20 @@ export default function EventContainer(props) {
         onClick={showDetail}
         toShow={show}
       />
-      {show == "EventDetail" && (
+      {show === "EventDetail" && (
         <EventDetails
           hideDetailHandler={hideDetail}
           bookNowHandler={bookNow}
           event={eventDetail}
         />
       )}
-      {show == "bookNow" && (
+      {show === "bookNow" && (
         <SeatBooking
           hideSeatingHandler={hideSeating}
           price={price}
           occupiedSeats={occupiedSeats}
+          eventId={eventId}
+          handleAppReload={props.handleAppReload}
         />
       )}
     </>
