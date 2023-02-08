@@ -12,12 +12,19 @@ This project is intended for learning only and does not promote any kind of busi
 
 ## Features
 
-- This project features a list of events in the near future. The date of events are not real.
+- All event details are stored in a FireBase Realtime Database and every time the page loads the data is fetched and transformed and rendered.
+- This project features a list of events in the future. The date of events are not real.
 - User can select an event of their choice and find out more details on clicking the button _More Info_.
 - The detailed section features a heading in Red font. This is a link to the google map directions.
 - The _Book Now_ button will open a theater layout, to setect/ deselect seats. The seats are color coded and are priced at different range.
 - The cart shows the number of seat selected under each category and the total amount.
-- The checkout page is being worked on at the moment and will be available soon.
+- The _checkout_ button is activated when a seat is slected (at least 1).
+- Clicking on the _checkout_ button open a _modal_ with an online payment form and a button _Pay Now_ at the bottom of the box.
+- The Modal can be closed in two ways -
+  by clicking on the 'x' on the top right of the payment form or by clicking anywhere outside the form.
+- The _Pay Now_ is only activated, when all the fields in the form have been filled out.
+- A validation process has been implemented to avoid any booking duplications so that, if a seat selected by the user was bought by another user while still filling out the payment form, the app will show an error message showing the selected seats were no longer available.
+- Otherwise, on successful booking, the success message is showm on the Modal.
 - The project can adjust to different screen screen sizes.
 
 ## Summary
@@ -68,8 +75,7 @@ A State has been initialized in the parent container named _SeatBooking_, that h
 
 ## Future Implementation
 
-1. The Checkout page.
-2. The look of the theater on smaller screen has to be redesigned.
-3. Authorized users will be able to add events to the list, which will be sorted based on event dates.
-4. Pie charts to show popularity of the event/ tickets sold till date (TBD).
-5. The will be fetched using API instead of being hard coded.
+1. The look of the theater on smaller screen has to be redesigned.
+2. Authorized users will be able to add events to the list, which will be sorted based on event dates.
+3. Pie charts to show popularity of the event/ tickets sold till date (TBD).
+4. Implement sear bar and sort through events.
