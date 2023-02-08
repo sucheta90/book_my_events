@@ -17,6 +17,7 @@ export default function SeatBooking(props) {
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [confirmationInfo, setConfirmationInfo] = useState({ title: "" });
+  const [shouldReload, setShouldReload] = useState(false);
 
   // Will fetch event data from database to compare the occupied seats to current selectedSeats array to avaoid duplication.
 
@@ -35,29 +36,26 @@ export default function SeatBooking(props) {
   };
   const compareSeats = (data) => {
     return new Promise((resolve, reject) => {
-      console.log(`inside data after compareSeats Data: ${data}`);
+      // console.log(`inside data after compareSeats Data: ${data}`);
       let occupiedSeats = data.occupiedSeats;
+      console.log(`inside Compare Seats ${occupiedSeats}`);
       for (let i = 0; i < selectedSeats.length; i++) {
         if (occupiedSeats.includes(selectedSeats[i])) {
           reject(
             "Can not complete action. Seat unavailable. Please select Seats that are available."
           );
-          // setIsSeatAvailable(false);
-          // setSeatUnavailableMessage(
-          //   "Can not complete action. Seat unavailable. Please select Seats that are available."
-          // );
-          // setShowCheckout("");
-          // throw new Error(seatUnavailableMessage);
         } else {
           setConfirmationInfo((confirmationInfo.title = data.title));
           occupiedSeats = [...occupiedSeats, ...selectedSeats];
-          console.log(`updated occupiedSeats: ${occupiedSeats}`);
+          // console.log(`updated occupiedSeats: ${occupiedSeats}`);
           resolve(occupiedSeats);
         }
       }
     });
   };
   const patchUpdatedData = (data) => {
+    console.log(`inside patchUpdatedData ${data}`);
+    console.log(JSON.stringify({ occupiedSeats: data }));
     return fetch(
       `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`,
       {
@@ -71,6 +69,7 @@ export default function SeatBooking(props) {
     setIsConfirmed(false);
     setIsError(false);
     setErrorMessage("");
+    setShouldReload(true);
     fetchData()
       .then(checkResponseToParseData)
       .then(compareSeats)
@@ -87,7 +86,7 @@ export default function SeatBooking(props) {
   }
   // end of fetch function
   function handleCheckout(e) {
-    console.log(selectedSeats);
+    // console.log(selectedSeats);
     setShowModal(true);
     setShowCheckout("Checkoutpage");
   }
@@ -103,9 +102,22 @@ export default function SeatBooking(props) {
       return [...prevState, e.target.id];
     });
   }
-  function closeModal() {
+  // function closeModal() {
+  //   setShowModal(false);
+  // }
+  function handleReloadApp(e) {
+    if (shouldReload) {
+      props.handleAppReload();
+      // setShowModal(false);
+      setSelectedSeats([]);
+      setIsConfirmed(false);
+      setIsError(false);
+      setConfirmationInfo("");
+      setErrorMessage("");
+    }
     setShowModal(false);
   }
+
   let isSelected = selectedSeats.length >= 1;
 
   return (
@@ -125,21 +137,26 @@ export default function SeatBooking(props) {
         isSelected={isSelected}
       />
       {showModal && (
-        <Layout hideModal={closeModal}>
+        <Layout hideModal={handleReloadApp}>
           {showCheckout === "Checkoutpage" && !isConfirmed && (
             <Checkout
-              hideCheckout={closeModal}
+              hideCheckout={handleReloadApp}
               selectedSeats={selectedSeats}
               handlePayementConfirmation={handlePayementConfirmation}
             />
           )}
           {isError && (
-            <CheckoutError error={errorMessage} hideModal={closeModal} />
+            <CheckoutError
+              error={errorMessage}
+              onBlur={handleReloadApp}
+              handleAppReload={handleReloadApp}
+            />
           )}
           {isConfirmed && (
             <Confirmation
               confirmationInfo={confirmationInfo}
-              hideModal={closeModal}
+              onBlur={handleReloadApp}
+              handleAppReload={handleReloadApp}
             />
           )}
         </Layout>

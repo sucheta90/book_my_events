@@ -26,7 +26,6 @@ export default function App() {
 
         const data = await response.json();
         if (!data) {
-          console.log("there is error in data");
           throw new Error("Something went wrong. Please try again.");
         }
 
@@ -38,10 +37,19 @@ export default function App() {
           obj.id = key;
           latestEvents.push(obj);
         }
+        let sortedEventData = latestEvents.sort((a, b) => {
+          let dateA = new Date(a.date);
+          let dateB = new Date(b.date);
+          if (dateA > dateB) {
+            return 1;
+          } else if (dateB > dateA) {
+            return -1;
+          }
+        });
 
-        setEventData(latestEvents);
+        setEventData(sortedEventData);
       } catch (error) {
-        console.log(`inside catch`);
+        // console.log(`inside catch`);
         setIsError(true);
       }
       setIsLoading(false);
@@ -54,16 +62,6 @@ export default function App() {
       // console.log("after handle fetch call");
     }
   }, [isLoading]);
-  console.log(eventData);
-  let sortedEventData = eventData.sort((a, b) => {
-    let dateA = new Date(a.date);
-    let dateB = new Date(b.date);
-    if (dateA > dateB) {
-      return 1;
-    } else if (dateB > dateA) {
-      return -1;
-    }
-  });
 
   return (
     <div className="App">
@@ -76,7 +74,7 @@ export default function App() {
           onClick={handleAppReload}
         />
       ) : (
-        <Events events={sortedEventData} />
+        <Events events={eventData} handleAppReload={handleAppReload} />
       )}
 
       <Footer />

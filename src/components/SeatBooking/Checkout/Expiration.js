@@ -5,6 +5,7 @@ import useInputValidation from "../../../hooks/input-validation";
 export default function Expiration(props) {
   const [year, setYear] = useState("");
   const [isYearSelected, setIsYearSelected] = useState(false);
+  const [isMonthSelected, setIsMonthSelected] = useState(false);
 
   function isCvvValid(value) {
     let cvvRegex = /^\d{3,4}$/g;
@@ -36,17 +37,17 @@ export default function Expiration(props) {
     if (e.target.value) {
       setIsYearSelected(true);
     }
-    console.log(`From inside select Year ${e.target.value}`);
+    // console.log(`From inside select Year ${e.target.value}`);
   }
-  console.log(`rendering ${year} ${currentYear}`);
+  // console.log(`rendering ${year} ${currentYear}`);
 
   // Function create <select>/ <option> for Months to show dynamically.
   let monthsOfYear = [<option key="blank_month"></option>];
-  console.log(typeof year);
-  console.log(typeof currentYear);
+  // console.log(typeof year);
+  // console.log(typeof currentYear);
   if (year === currentYear) {
     let month = new Date().getMonth() + 1;
-    console.log(`inside if block/month/ expiration ${month}`);
+    // console.log(`inside if block/month/ expiration ${month}`);
 
     for (let i = month; i <= 12; i++) {
       monthsOfYear.push(<option key={`${i}month`}>{i}</option>);
@@ -60,7 +61,14 @@ export default function Expiration(props) {
       );
     }
   }
-
+  function handleMonthChange(e) {
+    if (e.target.value) {
+      setIsMonthSelected(true);
+    }
+  }
+  if (isYearSelected && isMonthSelected && checkingIfCvvValid) {
+    props.setIsExpirationValid(true);
+  }
   return (
     <section>
       <div className={styles.expiration}>
@@ -76,12 +84,13 @@ export default function Expiration(props) {
             className={
               isYearSelected ? styles.month_active : styles.month_inactive
             }
+            onChange={handleMonthChange}
           >
             {monthsOfYear}
           </select>
         </span>
-        <span className={styles.cvv}>
-          <label>CVV</label>
+        <span className={styles.cvv_active}>
+          <label htmlFor="cvv">CVV</label>
           <input
             type="text"
             id="cvv"
@@ -89,6 +98,7 @@ export default function Expiration(props) {
             value={cvv}
             onChange={handleCvvInfo}
             onBlur={touchedCvv}
+            disabled={isMonthSelected ? "" : "disabled"}
           />
         </span>
       </div>

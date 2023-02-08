@@ -69,6 +69,7 @@ export default function EventContainer(props) {
           price={price}
           occupiedSeats={occupiedSeats}
           eventId={eventId}
+          handleAppReload={props.handleAppReload}
         />
       )}
     </>

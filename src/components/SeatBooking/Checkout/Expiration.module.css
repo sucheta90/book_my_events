@@ -9,18 +9,25 @@
 .expiration {
   width: 100%;
   margin-top: 1em;
+  margin-left: auto;
+  /* margin-right: auto; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   /* border: 1px solid green; */
-  margin-bottom: 2em;
+  margin-bottom: 0;
   /* padding: 0 0.5em; */
 }
 .expiration select {
   height: 1.5em;
 }
-.cvv input {
+.cvv_active input {
   height: 1.5em;
+}
+.cvv_inactive input {
+  height: 1.5em;
+  pointer-events: none;
+  opacity: 40%;
 }
 .expiration span {
   width: 35%;
@@ -53,4 +60,13 @@
   background-color: hsl(217, 13%, 31%);
   pointer-events: none;
   opacity: 40%;
+}
+.error {
+  text-align: right;
+  margin: 0 auto;
+  color: hsl(217, 13%, 31%);
+  text-shadow: none;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-top: 0.5em;
 }

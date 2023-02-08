@@ -5,6 +5,7 @@ import useInputValidation from "../../../hooks/input-validation";
 
 export default function Checkout(props) {
   const [isFormValid, setIsFromValid] = useState(false);
+  const [isExpirationValid, setIsExpirationValid] = useState(false);
   let isNameValid = (value) =>
     value.trim().length >= 2 && /^[A-Za-z\s]*$/.test(value);
   // function isCvvValid(value) {
@@ -21,7 +22,12 @@ export default function Checkout(props) {
     return myRegex.test(value);
   }
   function formValidation(e) {
-    if (checkingIfNameValid && checkingIfCardValid && checkingIfEmailValid) {
+    if (
+      checkingIfNameValid &&
+      checkingIfCardValid &&
+      checkingIfEmailValid &&
+      isExpirationValid
+    ) {
       setIsFromValid(true);
     }
   }
@@ -104,25 +110,13 @@ export default function Checkout(props) {
             <label htmlFor="expiration" className={styles.exp}>
               Expiration
             </label>
-            <Expiration id="expiration" />
-            {/* <div className={styles.cvv}>
-              <label htmlFor="cvv">CVV </label>
-              <input
-                id="cvv"
-                key="form_cvv"
-                type="text"
-                value={cvv}
-                onChange={handleCvvInfo}
-                onBlur={touchedCvv}
-              />
-            </div> */}
+            <Expiration
+              id="expiration"
+              setIsExpirationValid={setIsExpirationValid}
+            />
           </div>
         </div>
-        {/* {cvvError && (
-          <div className={styles.error}>
-            Please enter valid cvv code. Should have 3 or 4 digits.
-          </div>
-        )} */}
+
         <div className={styles.entries}>
           <label htmlFor="email">Email</label>
           <input
