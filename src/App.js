@@ -9,11 +9,23 @@ export default function App() {
   const [eventData, setEventData] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredEventData, setFilteredEventData] = useState([]);
+  const [isSearching, setIssearching] = useState(false);
+
+  function handleSearchInput(e) {
+    setIssearching(true);
+
+    const myRegex = new RegExp(e.target.value, "i");
+    const searchFilter = eventData.filter((event) => myRegex.test(event.title));
+
+    return setFilteredEventData(searchFilter);
+  }
 
   let handleAppReload = () => setIsLoading(true);
 
   let fetchData = () => {
     setIsError(false);
+
     async function handleFetch() {
       try {
         const response = await fetch(
@@ -46,7 +58,6 @@ export default function App() {
             return -1;
           }
         });
-
         setEventData(sortedEventData);
       } catch (error) {
         // console.log(`inside catch`);
@@ -63,10 +74,23 @@ export default function App() {
     }
   }, [isLoading]);
 
+  // if (searchInputValue) {
+  //   console.log(`inside searchInput if block`);
+  //   const myRegex = new RegExp(searchInputValue, "i");
+  //   const searchFilter = eventData.filter((event) => {
+  //     console.log("inside searchFilter");
+  //     if (myRegex.test(event.title)) {
+  //       return event;
+  //     }
+  //   });
+  //   return setEventData(searchFilter);
+  // }
+  // console.log(eventData);
+  console.log(`isSearching ${isSearching}`);
   return (
     <div className="App">
       <div className="container">
-        <Header />
+        <Header handleSearchInput={handleSearchInput} />
         {isError ? (
           <Errorwindow
             errorMessage={
@@ -75,7 +99,10 @@ export default function App() {
             onClick={handleAppReload}
           />
         ) : (
-          <Events events={eventData} handleAppReload={handleAppReload} />
+          <Events
+            events={isSearching ? filteredEventData : eventData}
+            handleAppReload={handleAppReload}
+          />
         )}
 
         <Footer />
