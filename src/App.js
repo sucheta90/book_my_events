@@ -74,19 +74,6 @@ export default function App() {
     }
   }, [isLoading]);
 
-  // if (searchInputValue) {
-  //   console.log(`inside searchInput if block`);
-  //   const myRegex = new RegExp(searchInputValue, "i");
-  //   const searchFilter = eventData.filter((event) => {
-  //     console.log("inside searchFilter");
-  //     if (myRegex.test(event.title)) {
-  //       return event;
-  //     }
-  //   });
-  //   return setEventData(searchFilter);
-  // }
-  // console.log(eventData);
-  console.log(`isSearching ${isSearching}`);
   return (
     <div className="App">
       <div className="container">

@@ -9,7 +9,10 @@ export default function Expiration(props) {
 
   function isCvvValid(value) {
     let cvvRegex = /^\d{3,4}$/g;
-    return cvvRegex.test(value);
+    const checkCvvValid = cvvRegex.test(value);
+    // console.log(`isCvvValid ${isCvvValid}`);
+    props.handleValidation(checkCvvValid && isMonthSelected && isYearSelected);
+    return checkCvvValid;
   }
   // CVV - state maintenance, validation and error handling.
   const {
@@ -36,18 +39,16 @@ export default function Expiration(props) {
     setYear(+e.target.value);
     if (e.target.value) {
       setIsYearSelected(true);
+    } else {
+      setIsYearSelected(false);
+      setIsMonthSelected(false);
     }
-    // console.log(`From inside select Year ${e.target.value}`);
   }
-  // console.log(`rendering ${year} ${currentYear}`);
 
   // Function create <select>/ <option> for Months to show dynamically.
   let monthsOfYear = [<option key="blank_month"></option>];
-  // console.log(typeof year);
-  // console.log(typeof currentYear);
   if (year === currentYear) {
     let month = new Date().getMonth() + 1;
-    // console.log(`inside if block/month/ expiration ${month}`);
 
     for (let i = month; i <= 12; i++) {
       monthsOfYear.push(<option key={`${i}month`}>{i}</option>);
@@ -64,11 +65,11 @@ export default function Expiration(props) {
   function handleMonthChange(e) {
     if (e.target.value) {
       setIsMonthSelected(true);
+    } else {
+      setIsMonthSelected(false);
     }
   }
-  if (isYearSelected && isMonthSelected && checkingIfCvvValid) {
-    props.setIsExpirationValid(true);
-  }
+
   return (
     <section>
       <div className={styles.expiration}>
@@ -95,7 +96,7 @@ export default function Expiration(props) {
             type="text"
             id="cvv"
             key="form_cvv"
-            value={cvv}
+            value={isMonthSelected ? cvv : ""}
             onChange={handleCvvInfo}
             onBlur={touchedCvv}
             disabled={isMonthSelected ? "" : "disabled"}
