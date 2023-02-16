@@ -4,8 +4,13 @@ import Expiration from "./Expiration";
 import useInputValidation from "../../../hooks/input-validation";
 
 export default function Checkout(props) {
-  const [isFormValid, setIsFromValid] = useState(false);
+  //const [isFormValid, setIsFromValid] = useState(false);
   const [isExpirationValid, setIsExpirationValid] = useState(false);
+
+  function checkingIfExpirationIsValid(isValid) {
+    setIsExpirationValid(isValid);
+  }
+
   let isNameValid = (value) =>
     value.trim().length >= 2 && /^[A-Za-z\s]*$/.test(value);
   // function isCvvValid(value) {
@@ -21,6 +26,7 @@ export default function Checkout(props) {
     let myRegex = /^\d{15,16}$/g;
     return myRegex.test(value);
   }
+  /*
   function formValidation(e) {
     if (
       checkingIfNameValid &&
@@ -29,9 +35,11 @@ export default function Checkout(props) {
       isExpirationValid
     ) {
       setIsFromValid(true);
+    } else {
+      setIsFromValid(false);
     }
   }
-
+*/
   const {
     inputValue: name,
     handleInputValue: handleChangeName,
@@ -62,7 +70,11 @@ export default function Checkout(props) {
   } = useInputValidation(isEmailValid);
 
   // ***********End of Card validation ***********
-
+  const isFormValid =
+    checkingIfNameValid &&
+    checkingIfCardValid &&
+    checkingIfEmailValid &&
+    isExpirationValid;
   return (
     <div className={styles.Checkout}>
       <div className={styles.checkout__header}>
@@ -70,7 +82,7 @@ export default function Checkout(props) {
         <button onClick={props.hideCheckout}>X</button>
       </div>
 
-      <form action="" className={styles.form} onChange={formValidation}>
+      <form action="" className={styles.form}>
         <div className={styles.entries}>
           <label htmlFor="name">Name on Card</label>
           <input
@@ -112,7 +124,7 @@ export default function Checkout(props) {
             </label>
             <Expiration
               id="expiration"
-              setIsExpirationValid={setIsExpirationValid}
+              handleValidation={checkingIfExpirationIsValid}
             />
           </div>
         </div>

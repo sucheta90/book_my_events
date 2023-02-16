@@ -1,19 +1,39 @@
 .Header {
   margin: 0 auto;
   width: 95%;
-  padding: 1.2em;
+  padding: 1em;
   background-color: #ef233c;
   border-radius: 12px;
   box-shadow: -0.3rem 0.3rem 0.6rem #686464;
   margin-bottom: 0;
+}
+.header_container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 82%;
+
+  /* border: 1px solid blue; */
 }
 .Header h2 {
   color: white;
   overflow: hidden;
   text-shadow: none;
   padding: 0;
+  margin: 0 auto;
+  margin-left: 20%;
+  justify-self: center;
 }
-
+.search {
+  width: 20%;
+  color: black;
+  text-shadow: none;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.75em;
+  margin-left: 0.5em;
+  padding: 0.75em 0.3em;
+}
 @media screen and (max-width: 768px) {
   .Header {
     width: 90vw;
