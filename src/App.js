@@ -16,7 +16,13 @@ export default function App() {
     setIssearching(true);
 
     const myRegex = new RegExp(e.target.value, "i");
-    const searchFilter = eventData.filter((event) => myRegex.test(event.title));
+    const searchFilter = eventData.filter(
+      (event) =>
+        myRegex.test(event.title) ||
+        myRegex.test(event.city) ||
+        myRegex.test(event.location) ||
+        myRegex.test(event.state)
+    );
 
     return setFilteredEventData(searchFilter);
   }
