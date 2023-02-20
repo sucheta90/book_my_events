@@ -26,12 +26,16 @@ export default function EventContainer(props) {
   const eventId = props.event.id;
 
   const [show, setShow] = useState("");
+
+  // Handler function to show event details onClick event + More Info
   function showDetail(e) {
     setShow("EventDetail");
   }
+  // Handler function to hide event details onClick event + Hide Info
   function hideDetail(e) {
     setShow("");
   }
+  // Handler function to open Gallery view onClick event + Book now
   function bookNow(e) {
     setShow("bookNow");
   }
@@ -54,7 +58,7 @@ export default function EventContainer(props) {
         blueClass={props.event.blueclass}
         eventItem={eventItem}
         onClick={showDetail}
-        toShow={show}
+        // toShow={show}
       />
       {show === "EventDetail" && (
         <EventDetails

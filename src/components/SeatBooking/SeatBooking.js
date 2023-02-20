@@ -23,7 +23,8 @@ export default function SeatBooking(props) {
 
   const fetchData = () => {
     return fetch(
-      `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`
+      // `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`
+      `https://eventtickets-44017-default-rtdb.firebaseio.com/events/${props.eventId}.json`
     );
   };
   const checkResponseToParseData = (response) => {
@@ -57,7 +58,8 @@ export default function SeatBooking(props) {
     console.log(`inside patchUpdatedData ${data}`);
     console.log(JSON.stringify({ occupiedSeats: data }));
     return fetch(
-      `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`,
+      // `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`,
+      `https://eventtickets-44017-default-rtdb.firebaseio.com/events/${props.eventId}.json`,
       {
         method: "PATCH",
         body: JSON.stringify({ occupiedSeats: data }),

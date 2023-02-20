@@ -6,12 +6,14 @@ import Footer from "./components/Footer/Footer";
 import Errorwindow from "./components/Error/Errorwindow";
 
 export default function App() {
+  //state for tracking the Main Evenet data that is being fetched from the database.
   const [eventData, setEventData] = useState([]);
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [filteredEventData, setFilteredEventData] = useState([]);
-  const [isSearching, setIssearching] = useState(false);
+  const [isError, setIsError] = useState(false); //state maintains a flag that helps determine if an error messgae should be displayed on screen.
+  const [isLoading, setIsLoading] = useState(true); // set true while loading the app. Also, helps to reload app.
+  const [filteredEventData, setFilteredEventData] = useState([]); // events that match the search criteria are stored in filteredEventData.
+  const [isSearching, setIssearching] = useState(false); // to determine which data to render (filtered data / actual event data)
 
+  // Handler function - called when a user search for a particular keyword. This handler function is passed as props, to the Header component.
   function handleSearchInput(e) {
     setIssearching(true);
 
@@ -27,15 +29,17 @@ export default function App() {
     return setFilteredEventData(searchFilter);
   }
 
-  let handleAppReload = () => setIsLoading(true);
+  let handleAppReload = () => setIsLoading(true); // triggers App reload
 
+  // This async function fetched data form the Firebase database
   let fetchData = () => {
     setIsError(false);
 
     async function handleFetch() {
       try {
         const response = await fetch(
-          "https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events.json"
+          // "https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events.json"
+          "https://eventtickets-44017-default-rtdb.firebaseio.com/events.json"
         );
 
         if (!response.ok) {
@@ -94,6 +98,7 @@ export default function App() {
         ) : (
           <Events
             events={isSearching ? filteredEventData : eventData}
+            // Below is the handler function to trigger app reload which is being passed in SeatBooking.js, through EventContainer.
             handleAppReload={handleAppReload}
           />
         )}
