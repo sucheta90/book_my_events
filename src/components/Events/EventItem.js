@@ -5,6 +5,7 @@ import EventDate from "./EventDate";
 export default function EventItem(props) {
   const day = props.date.toLocaleString("en-US", { weekday: "short" });
   return (
+    // Card is a generic container and uses the concept of component compsition.
     <Card className={`${styles.tile}`} id={props.id}>
       <EventDate date={props.date} className={styles.pointer_none} />
       <div className={`${styles.pointer_none} ${styles.mainInfo}`}>
