@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card";
 import styles from "./SeatBooking.module.css";
 import SeatingHeader from "./SeatingHeader";
