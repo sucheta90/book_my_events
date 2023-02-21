@@ -22,7 +22,7 @@ export default function App() {
       (event) =>
         myRegex.test(event.title) ||
         myRegex.test(event.city) ||
-        myRegex.test(event.location) ||
+        // myRegex.test(event.location) ||
         myRegex.test(event.state)
     );
 
