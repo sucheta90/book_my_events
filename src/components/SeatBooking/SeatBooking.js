@@ -23,7 +23,6 @@ export default function SeatBooking(props) {
 
   const fetchData = () => {
     return fetch(
-      // `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`
       `https://eventtickets-44017-default-rtdb.firebaseio.com/events/${props.eventId}.json`
     );
   };
@@ -37,9 +36,8 @@ export default function SeatBooking(props) {
   };
   const compareSeats = (data) => {
     return new Promise((resolve, reject) => {
-      // console.log(`inside data after compareSeats Data: ${data}`);
-      let occupiedSeats = data.occupiedSeats;
-      console.log(`inside Compare Seats ${occupiedSeats}`);
+      let occupiedSeats = data.occupiedSeats; // an array of seat id's
+      // console.log(`inside Compare Seats ${occupiedSeats}`);
       for (let i = 0; i < selectedSeats.length; i++) {
         if (occupiedSeats.includes(selectedSeats[i])) {
           reject(
@@ -55,10 +53,9 @@ export default function SeatBooking(props) {
     });
   };
   const patchUpdatedData = (data) => {
-    console.log(`inside patchUpdatedData ${data}`);
+    // console.log(`inside patchUpdatedData ${data}`);
     console.log(JSON.stringify({ occupiedSeats: data }));
     return fetch(
-      // `https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events/${props.eventId}.json`,
       `https://eventtickets-44017-default-rtdb.firebaseio.com/events/${props.eventId}.json`,
       {
         method: "PATCH",
@@ -82,11 +79,12 @@ export default function SeatBooking(props) {
       })
       .catch((error) => {
         setIsError(true);
-        console.log(`${error}`);
+        // console.log(`${error}`);
         setErrorMessage(error);
       });
   }
   // end of fetch function
+
   function handleCheckout(e) {
     // console.log(selectedSeats);
     setShowModal(true);

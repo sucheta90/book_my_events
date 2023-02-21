@@ -22,8 +22,9 @@ export default function Checkout(props) {
       value
     );
   }
+  // To keep the app simple , for now the length of card number has been set to 6 or 8 digits.
   function isCardValid(value) {
-    let myRegex = /^\d{15,16}$/g;
+    let myRegex = /^\d{6,8}$/g;
     return myRegex.test(value);
   }
   /*
@@ -114,7 +115,7 @@ export default function Checkout(props) {
         </div>
         {cardError && (
           <div className={styles.error}>
-            Invalid card number. Number should be of length 15 or 16 digits long
+            Invalid card number. Number should be of length 6 or 8 digits long
           </div>
         )}
         <div className={styles.entries}>
