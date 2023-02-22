@@ -10,7 +10,7 @@ export default function Header(props) {
           type="text"
           className={styles.search}
           onChange={props.handleSearchInput}
-          placeholder="Artist, City, State, &#x1F50D;"
+          placeholder="Artist, City, State &#x1F50D;"
         />
         <h2> BookMyEvents </h2>
       </div>

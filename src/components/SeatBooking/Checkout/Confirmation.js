@@ -12,7 +12,7 @@ export default function Confirmation(props) {
         className={styles.confirmation_btn_home}
         onClick={props.handleAppReload}
       >
-        Back
+        Close
       </button>
     </div>
   );

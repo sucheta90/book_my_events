@@ -6,7 +6,7 @@ export default function CheckoutError(props) {
     <div className={styles.error}>
       <h2 className={styles.error_header}>{props.error}</h2>
       <button className={styles.error_btn} onClick={props.handleAppReload}>
-        Back
+        Close
       </button>
     </div>
   );
