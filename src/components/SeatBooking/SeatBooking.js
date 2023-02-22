@@ -19,7 +19,7 @@ export default function SeatBooking(props) {
   const [confirmationInfo, setConfirmationInfo] = useState({ title: "" });
   const [shouldReload, setShouldReload] = useState(false);
 
-  // Will fetch event data from database to compare the occupied seats to current selectedSeats array to avaoid duplication.
+  // Will fetch event data from database to compare the occupied seats to current selectedSeats array to avoid duplication.
 
   const fetchData = () => {
     return fetch(
