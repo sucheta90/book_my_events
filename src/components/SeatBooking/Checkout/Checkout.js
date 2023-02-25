@@ -149,7 +149,7 @@ export default function Checkout(props) {
         <div>
           <button
             className={isFormValid ? styles.paynow_active : styles.paynow}
-            onClick={props.handlePayementConfirmation}
+            onClick={props.handlePaymentConfirmation}
           >
             Pay now
           </button>

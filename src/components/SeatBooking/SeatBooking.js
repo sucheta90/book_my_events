@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "../UI/Card";
 import styles from "./SeatBooking.module.css";
 import SeatingHeader from "./SeatingHeader";
@@ -8,8 +8,10 @@ import Layout from "./Layout/Layout";
 import Checkout from "./Checkout/Checkout";
 import Confirmation from "./Checkout/Confirmation";
 import CheckoutError from "./Checkout/CheckoutError";
+import { AppReloadContext } from "../../context/appRelaod-context";
 
 export default function SeatBooking(props) {
+  const appReload = useContext(AppReloadContext);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showCheckout, setShowCheckout] = useState("");
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -63,7 +65,7 @@ export default function SeatBooking(props) {
       }
     );
   };
-  function handlePayementConfirmation(e) {
+  function handlePaymentConfirmation(e) {
     e.preventDefault();
     setIsConfirmed(false);
     setIsError(false);
@@ -107,7 +109,7 @@ export default function SeatBooking(props) {
   // }
   function handleReloadApp(e) {
     if (shouldReload) {
-      props.handleAppReload();
+      appReload();
       // setShowModal(false);
       setSelectedSeats([]);
       setIsConfirmed(false);
@@ -122,7 +124,7 @@ export default function SeatBooking(props) {
 
   return (
     <Card className={styles.seats}>
-      <SeatingHeader price={props.price} />
+      <SeatingHeader />
       <Gallery
         selectedSeats={selectedSeats}
         occupiedSeats={props.occupiedSeats}
@@ -130,7 +132,6 @@ export default function SeatBooking(props) {
         hideSeatingHandler={props.hideSeatingHandler}
       />
       <Cart
-        price={props.price}
         selectedSeats={selectedSeats}
         handleCheckout={handleCheckout}
         validate={showCheckout}
@@ -142,7 +143,7 @@ export default function SeatBooking(props) {
             <Checkout
               hideCheckout={handleReloadApp}
               selectedSeats={selectedSeats}
-              handlePayementConfirmation={handlePayementConfirmation}
+              handlePaymentConfirmation={handlePaymentConfirmation}
             />
           )}
           {isError && (
