@@ -11,7 +11,7 @@ export default function Events(props) {
         key={props.events.indexOf(event)}
         id={`event_container_${props.events.indexOf(event)}`}
         event={event}
-        handleAppReload={props.handleAppReload}
+        // handleAppReload={props.handleAppReload}
       />
     );
   });

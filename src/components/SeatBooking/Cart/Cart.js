@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { PriceContext } from "../../../context/price-context";
 import styles from "./Cart.module.css";
 import Seat from "../Seat/Seat";
 
 export default function Cart(props) {
-  let price = props.price;
+  // let price = props.price;
+  let price = useContext(PriceContext);
   let selectedSeats = props.selectedSeats;
   let qty_red = 0;
   let qty_green = 0;

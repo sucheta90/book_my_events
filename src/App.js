@@ -4,6 +4,7 @@ import Events from "./components/Events/Events";
 import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer/Footer";
 import Errorwindow from "./components/Error/Errorwindow";
+import HandleAppReload from "./context/appRelaod-context";
 
 export default function App() {
   //state for tracking the Main Evenet data that is being fetched from the database.
@@ -66,6 +67,8 @@ export default function App() {
             return 1;
           } else if (dateB > dateA) {
             return -1;
+          } else {
+            return 0;
           }
         });
         setEventData(sortedEventData);
@@ -83,27 +86,30 @@ export default function App() {
       // console.log("after handle fetch call");
     }
   }, [isLoading]);
-
+  // HandleAppReload is a component which wraps the children and acts as a context provider. The following code also passes the context value as props
+  // to the HandleAppReload component and inside HandleAppReload, the prop's value set as context's value
   return (
     <div className="App">
       <div className="container">
-        <Header handleSearchInput={handleSearchInput} />
-        {isError ? (
-          <Errorwindow
-            errorMessage={
-              <h3>Sorry We can't process your request please try again</h3>
-            }
-            onClick={handleAppReload}
-          />
-        ) : (
-          <Events
-            events={isSearching ? filteredEventData : eventData}
-            // Below is the handler function to trigger app reload which is being passed in SeatBooking.js, through EventContainer.
-            handleAppReload={handleAppReload}
-          />
-        )}
+        <HandleAppReload reloader={handleAppReload}>
+          <Header handleSearchInput={handleSearchInput} />
+          {isError ? (
+            <Errorwindow
+              errorMessage={
+                <h3>Sorry We can't process your request please try again</h3>
+              }
+              // onClick={handleAppReload}
+            />
+          ) : (
+            <Events
+              events={isSearching ? filteredEventData : eventData}
+              // Below is the handler function to trigger app reload which is being passed in SeatBooking.js, through EventContainer.
+              // handleAppReload={handleAppReload}
+            />
+          )}
 
-        <Footer />
+          <Footer />
+        </HandleAppReload>
       </div>
     </div>
   );
