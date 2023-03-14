@@ -78,4 +78,4 @@ A State has been initialized in the parent container named _SeatBooking_, that h
 1. The look of the theater on smaller screen has to be redesigned.
 2. Authorized users will be able to add events to the list, which will be sorted based on event dates.
 3. Pie charts to show popularity of the event/ tickets sold till date (TBD).
-4. Implement sear bar and sort through events.
+
