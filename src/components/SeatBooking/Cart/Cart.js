@@ -6,6 +6,7 @@ import Seat from "../Seat/Seat";
 export default function Cart(props) {
   // let price = props.price;
   let price = useContext(PriceContext);
+
   let selectedSeats = props.selectedSeats;
   let qty_red = 0;
   let qty_green = 0;
