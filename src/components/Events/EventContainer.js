@@ -58,7 +58,7 @@ export default function EventContainer(props) {
         blueClass={props.event.blueclass}
         eventItem={eventItem}
         onClick={showDetail}
-        // toShow={show}
+        toShow={show}
       />
       {show === "EventDetail" && (
         <EventDetails

@@ -39,26 +39,31 @@ export default function App() {
       try {
         const response = await fetch(
           // "https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events.json"
-          "https://eventtickets-44017-default-rtdb.firebaseio.com/events.json"
+          // "https://eventtickets-44017-default-rtdb.firebaseio.com/events.json"
+          "https://eventbooking-3f9ae-default-rtdb.firebaseio.com/events.json"
         );
 
         if (!response.ok) {
           throw new Error("Something went wrong. Please try again.");
         }
-
+        console.log(`Response ${response}`);
         const data = await response.json();
         if (!data) {
           throw new Error("Something went wrong. Please try again.");
         }
-
         const latestEvents = [];
 
         for (let key in data) {
+          console.log(`KEY in data ${key}`);
           let obj = data[key];
+          console.log(`event Object ${data[key]} `);
           obj.date = new Date(obj.date);
           obj.id = key;
           latestEvents.push(obj);
         }
+
+        console.log(typeof latestEvents);
+
         let sortedEventData = latestEvents.sort((a, b) => {
           let dateA = new Date(a.date);
           let dateB = new Date(b.date);
@@ -83,7 +88,7 @@ export default function App() {
       // console.log("after handle fetch call");
     }
   }, [isLoading]);
-
+  // console.log(`printing eventdata ${eventData}`);
   return (
     <div className="App">
       <div className="container">

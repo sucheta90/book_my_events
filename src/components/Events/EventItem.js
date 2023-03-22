@@ -4,6 +4,8 @@ import styles from "./EventItem.module.css";
 import EventDate from "./EventDate";
 export default function EventItem(props) {
   const day = props.date.toLocaleString("en-US", { weekday: "short" });
+  // console.log(`showing to show ${props.toShow}`);
+  console.log(` checking props toShow props.toShow ${props.toShow}`);
   return (
     // Card is a generic container and uses the concept of component compsition.
     <Card className={`${styles.tile}`} id={props.id}>
@@ -16,6 +18,7 @@ export default function EventItem(props) {
         {/* <p className={styles.pointer_none}>{props.location} </p> */}
         <p className={styles.pointer_none}>{`${props.city} ${props.state}`}</p>
       </div>
+
       {props.toShow === "" && (
         <button
           id={`info_btn_${props.id}`}

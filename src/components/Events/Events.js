@@ -5,6 +5,7 @@ import styles from "./Events.module.css";
 import EventContainer from "./EventContainer";
 
 export default function Events(props) {
+  // console.log(`props.events from Event.js ${props.events}`);
   const eventItem = props.events.map((event) => {
     return (
       <EventContainer
