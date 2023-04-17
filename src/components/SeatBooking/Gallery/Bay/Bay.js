@@ -14,6 +14,7 @@ export default function Bay(props) {
           occupiedSeats={props.occupiedSeats}
           selectedSeats={props.selectedSeats}
           onClick={props.onClick}
+          data-testid="column"
         />
       );
     } else if (i > 2 && i <= 5) {
@@ -25,6 +26,7 @@ export default function Bay(props) {
           occupiedSeats={props.occupiedSeats}
           selectedSeats={props.selectedSeats}
           onClick={props.onClick}
+          data-testid="column"
         />
       );
     } else if (i > 5 && i <= 8) {
@@ -36,6 +38,7 @@ export default function Bay(props) {
           occupiedSeats={props.occupiedSeats}
           selectedSeats={props.selectedSeats}
           onClick={props.onClick}
+          data-testid="column"
         />
       );
     }

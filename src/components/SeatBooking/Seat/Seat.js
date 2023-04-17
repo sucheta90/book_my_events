@@ -22,6 +22,7 @@ export default function Seat(props) {
       className={`${styles.seat} ${styles[status]} `}
       id={props.id}
       onClick={props.onClick}
+      data-testid="seat-component"
     >
       <div className={`${styles.top} ${styles[props.className]}`}></div>
       <div className={`${styles.bottom} ${styles[props.className]} `}></div>
