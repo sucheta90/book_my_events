@@ -45,7 +45,7 @@ export default function EventContainer(props) {
   }
   // console.log(`inside container ${occupiedSeats}`);
   return (
-    <>
+    <div data-testid="parent-div">
       <EventItem
         id={props.event.id}
         title={props.event.title}
@@ -79,6 +79,6 @@ export default function EventContainer(props) {
           />
         </PriceContextProvider>
       )}
-    </>
+    </div>
   );
 }

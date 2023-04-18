@@ -39,9 +39,6 @@ export default function App() {
     async function handleFetch() {
       try {
         const response = await fetch(
-          // "https://bookmyevents-2ad9f-default-rtdb.firebaseio.com/events.json"
-          //"https://eventtickets-44017-default-rtdb.firebaseio.com/events.json"
-          //"https://eventbooking-3f9ae-default-rtdb.firebaseio.com/events.json"
           "https://bookevents-8f33c-default-rtdb.firebaseio.com//events.json"
         );
 

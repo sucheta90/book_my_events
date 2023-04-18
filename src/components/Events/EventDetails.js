@@ -20,7 +20,11 @@ export default function EventDetails(props) {
         <p className={styles.event_intro}>{props.event.description}</p>
         <div className={styles.buttons}>
           <button onClick={props.hideDetailHandler}>Hide Info</button>
-          <button id="bookNow-btn" onClick={props.bookNowHandler}>
+          <button
+            data-testid="bookNow-btn"
+            id="bookNow-btn"
+            onClick={props.bookNowHandler}
+          >
             Book now
           </button>
         </div>
