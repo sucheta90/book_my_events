@@ -1,5 +1,4 @@
 import EventDetails from "./EventDetails";
-import SeatBooking from "../SeatBooking/SeatBooking";
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
